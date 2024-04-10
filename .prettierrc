@@ -1,0 +1,30 @@
+{
+  "bracketSpacing": true,
+  "jsxBracketSameLine": true,
+  "printWidth": 220,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": true,
+  "arrowParens": "avoid",
+  "importOrder": [
+    "react",
+    "react-router-dom",
+    "app",
+    "<THIRD_PARTY_MODULES>",
+    "[./]",
+    "[../]"
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.json",
+        "*.html"
+      ]
+    }
+  ]
+}
