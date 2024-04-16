@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react';
+import '@/utils/styles/tokens/dark/darkTheme.css';
+import '@/utils/styles/tokens/light/lightTheme.css';
 
 const preview: Preview = {
 	parameters: {
@@ -9,6 +11,10 @@ const preview: Preview = {
 			},
 		},
 		layout: 'fullscreen',
+		previewTabs: {
+			docs: { hidden: true },
+			viewMode: 'canvas',
+		},
 	},
 };
 
