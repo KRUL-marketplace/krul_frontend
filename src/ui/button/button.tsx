@@ -21,13 +21,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	 */
 	fullWidth?: boolean;
 	/**
-	 * Specifies an icon to be displayed on the left side of the button.
-	 */
-	iconLeft?: ReactElement;
-	/**
 	 * Specifies an icon to be displayed on the right side of the button.
 	 */
-	iconRight?: ReactElement;
+	icon?: ReactElement;
 	/**
 	 * If true, the button will be in a loading state.
 	 * @default false
@@ -50,8 +46,7 @@ export const Button = (props: ButtonProps) => {
 		variant = 'primary',
 		size = 'medium',
 		fullWidth = false,
-		iconLeft,
-		iconRight,
+		icon,
 		className = '',
 		disabled = false,
 		children,
@@ -63,19 +58,9 @@ export const Button = (props: ButtonProps) => {
 
 	const baseClass = 'krul-button';
 
-	const loadingClass = `${baseClass}__loading`;
-	const iconLeftClass = cx(
-		`${baseClass}__inner-icon_container ${baseClass}__inner-icon_left`,
-		isLoading && `${baseClass}__inner-content_loading`,
-	);
-	const iconRightClass = cx(
-		`${baseClass}__inner-icon_container ${baseClass}__inner-icon_right`,
-		isLoading && `${baseClass}__inner-content_loading`,
-	);
-	const textClasses = cx(
-		`${baseClass}__inner-text_crop-text ${baseClass}__text-flex`,
-		isLoading && `${baseClass}__inner-content_loading`,
-	);
+	const loadingClass = `${baseClass}_loading`;
+	const iconClass = `${baseClass}_icon`;
+	const textClasses = `${baseClass}_text`;
 
 	const classes = cx(
 		baseClass,
@@ -84,16 +69,12 @@ export const Button = (props: ButtonProps) => {
 		size && `${baseClass}_${size}`,
 		isLoading && `${baseClass}_loading`,
 		(disabled || ariaDisabled) && `${baseClass}_disabled`,
-		(iconLeft || iconRight) && `${baseClass}_${variant}_'with-icon'`,
-		iconLeft && !iconRight && `${baseClass}_with_icon_left`,
-		!iconLeft && iconRight && `${baseClass}_with_icon_right`,
 	);
 
 	return (
 		<button {...buttonProps} {...ariaAttributes} type="button" className={classes} disabled={disabled}>
-			{iconLeft && <div className={iconLeftClass}>{iconLeft}</div>}
 			<span className={textClasses}>{children}</span>
-			{iconRight && <div className={iconRightClass}>{iconRight}</div>}
+			{icon && <div className={iconClass}>{icon}</div>}
 		</button>
 	);
 };
