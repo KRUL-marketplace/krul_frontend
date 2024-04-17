@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
+import '@/utils/styles/tokens/light/lightTheme.css';
 import { Inter } from 'next/font/google';
 
 import 'utils/styles/normalize.css';
