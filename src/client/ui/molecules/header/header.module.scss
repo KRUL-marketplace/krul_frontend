@@ -1,0 +1,35 @@
+@import '@/utils/styles/tokens/light/lightTheme.scss';
+
+.header {
+	position: fixed;
+	width: 100%;
+	background-color: $core-bg-color;
+	overflow: hidden;
+	z-index: 9;
+	top: 0;
+
+	padding-top: 0.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&_hamburger {
+	}
+
+	&_logo {
+		position: absolute;
+		right: 50%;
+		transform: translateX(50%);
+	}
+
+	&_icons {
+		display: flex;
+	}
+
+	&_search button,
+	&_cart button {
+		//border-right: 1px solid $icon-border-color;
+		//border-left: 1px solid $icon-border-color;
+	}
+}

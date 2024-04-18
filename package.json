@@ -13,6 +13,11 @@
     "generate-tokens": "node scripts/generate-tokens.cjs"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "framer-motion": "^11.1.2",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18"
@@ -39,6 +44,7 @@
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
     "postcss-nested": "^6.0.1",
+    "sass": "^1.75.0",
     "storybook": "^8.0.6",
     "style-loader": "^4.0.0",
     "typescript": "^5",
@@ -46,5 +52,14 @@
   },
   "sideEffects": [
     "*.css"
+  ],
+  "resolutions": {
+    "string-width": "4.2.3",
+    "jackspeak": "2.3.6"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not dead",
+    "not op_mini all"
   ]
 }

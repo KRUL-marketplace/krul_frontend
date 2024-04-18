@@ -18,8 +18,8 @@ function collectTokens(dirPath) {
 			// Recursively collect tokens from subdirectory
 			tokens = tokens.concat(collectTokens(filePath));
 		} else {
-			// If file is a TypeScript file and not lightTheme.css or darkTheme.css, collect tokens
-			if (file.endsWith('.ts') && file !== 'lightTheme.css' && file !== 'darkTheme.css') {
+			// If file is a TypeScript file and not lightTheme.scss or darkTheme.css, collect tokens
+			if (file.endsWith('.ts') && file !== 'lightTheme.scss' && file !== 'darkTheme.css') {
 				// Add a comment with the name of the file at the beginning of each new file
 				tokens.push(`\n/* ${file} */\n`.replace(/.ts/, ''));
 				tokens = tokens.concat(extractTokens(filePath));
