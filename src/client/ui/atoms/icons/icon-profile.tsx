@@ -3,14 +3,14 @@ export const iconProfile = (
 		<path
 			d="M0.833984 23.3743V22.166C0.833984 18.162 4.07992 14.916 8.08398 14.916H12.9173C16.9214 14.916 20.1673 18.162 20.1673 22.166V23.3743"
 			stroke="#141414"
-			stroke-width="1.6"
-			stroke-linecap="round"
+			strokeWidth="1.6"
+			strokeLinecap="round"
 		/>
 		<path
 			d="M10.5013 11.2917C7.83192 11.2917 5.66797 9.12771 5.66797 6.45833C5.66797 3.78896 7.83192 1.625 10.5013 1.625C13.1706 1.625 15.3346 3.78896 15.3346 6.45833C15.3346 9.12771 13.1706 11.2917 10.5013 11.2917Z"
 			stroke="#141414"
-			stroke-width="1.6"
-			stroke-linecap="round"
+			strokeWidth="1.6"
+			strokeLinecap="round"
 		/>
 	</svg>
 );

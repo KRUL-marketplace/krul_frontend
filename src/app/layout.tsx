@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
+import RootHead from '@/client/ui/helpers/head';
+
 import '@/utils/styles/global.scss';
 import '@/utils/styles/normalize.css';
 import '@/utils/styles/tokens/light/lightTheme.scss';
@@ -21,6 +23,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru" className={fonts.rubik.variable}>
+			<RootHead />
 			<body>
 				<Providers>{children}</Providers>
 			</body>

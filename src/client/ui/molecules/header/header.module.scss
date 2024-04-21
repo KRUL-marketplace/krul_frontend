@@ -1,4 +1,5 @@
 @import '@/utils/styles/tokens/light/lightTheme.scss';
+@import '@/utils/styles/mixins.scss';
 
 .header {
 	position: fixed;
@@ -14,22 +15,36 @@
 	align-items: center;
 	justify-content: space-between;
 
-	&_hamburger {
+	&_menu {
+		width: 80px;
 	}
 
 	&_logo {
-		position: absolute;
-		right: 50%;
-		transform: translateX(50%);
 	}
 
 	&_icons {
 		display: flex;
+		gap: 0.5rem;
 	}
 
-	&_search button,
-	&_cart button {
-		//border-right: 1px solid $icon-border-color;
-		//border-left: 1px solid $icon-border-color;
+	&_search {
+	}
+
+	&_profile {
+	}
+
+	&_favorites {
+	}
+
+	&_select {
+		width: 140px;
+		height: 64px;
+		background: #ccc;
+	}
+
+	&_searchBar {
+		height: 64px;
+		border: 1px solid;
+		width: 100%;
 	}
 }

@@ -19,7 +19,7 @@ export const Menu = ({ placement = 'right' }: Props) => {
 
 	return (
 		<>
-			<IconButton aria-label={'menu'} icon={<IconHamburger checked={isOpen} />} onClick={onOpen} />
+			<IconButton aria-label={'menu'} icon={<IconHamburger isOpen={isOpen} />} onClick={onOpen} />
 			<Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
 				<DrawerOverlay />
 				<DrawerContent>

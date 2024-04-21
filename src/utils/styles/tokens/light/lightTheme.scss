@@ -11,6 +11,8 @@ $core-disabled-border-color: #cfd4db;
 $theme-outline-color: #178fe5;
 
 $icon-border-color: #d6d6d6;
+$icon-button-bg-color: 'transparent';
+$icon-button-hover-bg-color: #d6d6d6;
 
 :export {
 	coreOutlineWidth: $core-outline-width;
@@ -24,4 +26,6 @@ $icon-border-color: #d6d6d6;
 	coreDisabledBorderColor: $core-disabled-border-color;
 	themeOutlineColor: $theme-outline-color;
 	iconBorderColor: $icon-border-color;
+	iconButtonBgColor: $icon-button-bg-color;
+	iconButtonHoverBgColor: $icon-button-hover-bg-color;
 }
