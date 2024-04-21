@@ -1,0 +1,31 @@
+@import '@/utils/styles/global.scss';
+
+$core-bg-color: #fff;
+$core-action-color: #141414;
+$core-action-secondary-color: #141414;
+$core-text-color: #141414;
+$core-disabled-bg-color: #d7dbe1;
+$core-disabled-text-color: #8591a3;
+$core-disabled-border-color: #cfd4db;
+
+$theme-outline-color: #178fe5;
+
+$icon-border-color: #d6d6d6;
+$icon-button-bg-color: 'transparent';
+$icon-button-hover-bg-color: #d6d6d6;
+
+:export {
+	coreOutlineWidth: $core-outline-width;
+	coreOutlineOffset: $core-outline-offset;
+	coreBgColor: $core-bg-color;
+	coreActionColor: $core-action-color;
+	coreActionSecondaryColor: $core-action-secondary-color;
+	coreTextColor: $core-text-color;
+	coreDisabledBgColor: $core-disabled-bg-color;
+	coreDisabledTextColor: $core-disabled-text-color;
+	coreDisabledBorderColor: $core-disabled-border-color;
+	themeOutlineColor: $theme-outline-color;
+	iconBorderColor: $icon-border-color;
+	iconButtonBgColor: $icon-button-bg-color;
+	iconButtonHoverBgColor: $icon-button-hover-bg-color;
+}

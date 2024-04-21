@@ -1,5 +1,11 @@
+import { Header } from '@/client/ui/molecules/header/header';
+
 const Home = () => {
-	return <main></main>;
+	return (
+		<main>
+			<Header />
+		</main>
+	);
 };
 
 export default Home;

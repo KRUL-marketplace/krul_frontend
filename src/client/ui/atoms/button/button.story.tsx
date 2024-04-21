@@ -1,7 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
+
+import { Button } from '@/client/ui/atoms/button/button';
+import { iconArrowRight } from '@/client/ui/atoms/icons/icon-arrow-right';
 import { DemoCard } from '@/storybook/demo-card/demo-card';
-import { Button } from '@/ui/button/button';
-import { iconArrowRight } from '@/ui/icons/icon-arrow-right';
 
 const meta = {
 	title: 'Components/Button',

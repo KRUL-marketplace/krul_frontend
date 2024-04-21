@@ -8,7 +8,13 @@ interface Props {
 	'aria-disabled'?: boolean | 'true' | 'false';
 }
 
-export const useAriaProperties = ({ isLoading, ariaLabelLoading, 'aria-label': ariaLabel = '', 'aria-labelledby': ariaLabelledby = '', 'aria-disabled': ariaDisabled }: Props): AriaAttributes => {
+export const useAriaProperties = ({
+	isLoading,
+	ariaLabelLoading,
+	'aria-label': ariaLabel = '',
+	'aria-labelledby': ariaLabelledby = '',
+	'aria-disabled': ariaDisabled,
+}: Props): AriaAttributes => {
 	const nonEmptyAriaLabel = isLoading && ariaLabelLoading ? ariaLabelLoading : ariaLabel;
 
 	return {
