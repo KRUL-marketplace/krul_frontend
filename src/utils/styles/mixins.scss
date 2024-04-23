@@ -110,8 +110,8 @@
 
 // Font size
 
-@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
-	font-size: $font-size * 0.1rem;
+@mixin font-size($font-size, $font-weight: 400, $line-height: normal, $letter-spacing: normal) {
+	font-size: $font-size;
 
 	@if $line-height==normal {
 		line-height: normal;
@@ -123,6 +123,10 @@
 		letter-spacing: normal;
 	} @else {
 		letter-spacing: #{$letter-spacing / $font-size}em;
+	}
+
+	@if $font-weight != 400 {
+		font-weight: $font-weight;
 	}
 }
 

@@ -1,10 +1,14 @@
 import { Header } from '@/client/ui/molecules/header/header';
+import { Shops } from '@client/ui/organisms/shops/shops';
 
 const Home = () => {
 	return (
-		<main>
+		<>
 			<Header />
-		</main>
+			<main>
+				<Shops />
+			</main>
+		</>
 	);
 };
 

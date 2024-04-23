@@ -1,0 +1,30 @@
+@import '@utils/styles/mixins';
+@import '@utils/styles/variables';
+
+.shops {
+	margin-top: 4rem;
+
+	&__title {
+		margin-bottom: 2rem;
+		@include font-size($font-size-title-sm, $font-weight-title);
+		text-align: center;
+	}
+
+	@include responsive(tablet) {
+		&__title {
+			@include font-size($font-size-title-md, $font-weight-title);
+		}
+	}
+
+	@include responsive(laptop) {
+		&__title {
+			@include font-size($font-size-title-lg, $font-weight-title);
+		}
+	}
+
+	@include responsive(desktop) {
+		&__title {
+			@include font-size($font-size-title-xl, $font-weight-title);
+		}
+	}
+}
