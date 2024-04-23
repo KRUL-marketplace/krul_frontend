@@ -44,13 +44,13 @@ export const Header = ({}: Props) => {
 			</Media>
 			<div className={iconsClass}>
 				<div className={profileIconClass}>
-					<IconButton aria-label={'profile'} icon={iconProfile} />
+					<IconButton aria-label={'profile'}>{iconProfile}</IconButton>
 				</div>
 				<div className={favouritesIconClass}>
-					<IconButton aria-label={'favourites'} icon={iconFavourites} />
+					<IconButton aria-label={'favourites'}>{iconFavourites}</IconButton>
 				</div>
 				<div className={cartIconClass}>
-					<IconButton aria-label={'shopping-cart'} icon={iconCart} />
+					<IconButton aria-label={'shopping-cart'}>{iconCart}</IconButton>
 				</div>
 			</div>
 		</div>

@@ -2,34 +2,43 @@
 
 import React from 'react';
 
-import { useDisclosure } from '@chakra-ui/hooks';
-import { Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay } from '@chakra-ui/modal';
-
 import { IconButton } from '@/client/ui/atoms/iconButton/iconButton';
 import { IconHamburger } from '@/client/ui/atoms/icons/icon-humburger/icon-hamburger';
 
 import '../../atoms/icons/icon-humburger/icon-humburger.scss';
+import { Drawer } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Box from '@mui/system/Box';
 
 interface Props {
 	placement?: 'right' | 'left' | 'top' | 'bottom';
 }
 
+const DrawerList = (
+	<Box sx={{ width: 250 }} role="presentation">
+		<List>
+			<ListItem disablePadding>Text</ListItem>
+			<ListItem disablePadding>Text</ListItem>
+			<ListItem disablePadding>Text</ListItem>
+		</List>
+	</Box>
+);
+
 export const Menu = ({ placement = 'right' }: Props) => {
-	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [open, setOpen] = React.useState(false);
+
+	const toggleDrawer = (newOpen: boolean) => () => {
+		setOpen(newOpen);
+	};
 
 	return (
 		<>
-			<IconButton aria-label={'menu'} icon={<IconHamburger isOpen={isOpen} />} onClick={onOpen} />
-			<Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-				<DrawerOverlay />
-				<DrawerContent>
-					<DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
-					<DrawerBody>
-						<p>Some contents...</p>
-						<p>Some contents...</p>
-						<p>Some contents...</p>
-					</DrawerBody>
-				</DrawerContent>
+			<IconButton aria-label={'menu'} onClick={toggleDrawer(!open)}>
+				<IconHamburger isOpen={open} />
+			</IconButton>
+			<Drawer open={open} onClose={toggleDrawer(false)} anchor={'right'}>
+				{DrawerList}
 			</Drawer>
 		</>
 	);

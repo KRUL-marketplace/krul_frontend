@@ -12,6 +12,7 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
 	},
+	images: { domains: ['images.fooby.ru'], formats: ['image/avif', 'image/webp'], },
 };
 
 export default nextConfig;

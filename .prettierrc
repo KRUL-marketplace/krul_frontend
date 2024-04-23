@@ -17,6 +17,7 @@
     "client",
     "server",
     "utils",
+    "public",
     "<THIRD_PARTY_MODULES>",
     "[./]",
     "[../]"
