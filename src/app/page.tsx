@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<>
 			<Header />
-			<main style={{ marginTop: '4rem' }}>
+			<main>
 				{/*<Shops />*/}
 				<Products />
 			</main>
