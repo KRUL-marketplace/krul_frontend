@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 
 import RootHead from '@/client/ui/helpers/head';
+import { Header } from '@client/ui/molecules/header/header';
 
 import '@/utils/styles/global.scss';
 import '@/utils/styles/normalize.css';
@@ -25,7 +26,10 @@ export default function RootLayout({
 		<html lang="ru" className={fonts.rubik.variable}>
 			<RootHead />
 			<body>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Header />
+					<main style={{ paddingTop: '3rem' }}>{children}</main>
+				</Providers>
 			</body>
 		</html>
 	);

@@ -1,6 +1,6 @@
 import { ShopCardProps } from '@client/ui/molecules/shop-card/shop-card.container';
 
-import queensImage from '../../../../../public/images/Queens.jpg';
+import queensImage from '../../../public/images/Queens.jpg';
 
 export const shopsMockData: ShopCardProps[] = [
 	{
@@ -8,19 +8,11 @@ export const shopsMockData: ShopCardProps[] = [
 		image: queensImage,
 	},
 	{
-		title: 'Queens',
+		title: 'Nike',
 		image: queensImage,
 	},
 	{
-		title: 'Queens',
-		image: queensImage,
-	},
-	{
-		title: 'Queens',
-		image: queensImage,
-	},
-	{
-		title: 'Queens',
+		title: 'Adidas',
 		image: queensImage,
 	},
 ];
