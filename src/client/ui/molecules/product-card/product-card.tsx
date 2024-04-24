@@ -25,7 +25,16 @@ export const Product = ({
 
 	return (
 		<Link href={'#'} className={css.product}>
-			<Image src={image} alt={title} width={300} height={300} className={css.product__image} />
+			<div className={css.product__imageWrapper}>
+				<Image
+					src={image}
+					alt={title}
+					className={css.product__image}
+					layout={'fill'}
+					objectFit={'cover'}
+					objectPosition={'center'}
+				/>
+			</div>
 			<div className={css.product__footer}>
 				<div className={css.product__texts}>
 					<div className={css.product__title}>{title}</div>
