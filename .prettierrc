@@ -13,7 +13,7 @@
     "react-router-dom",
     "next",
     "app",
-    "@chakra-ui",
+    "@mui",
     "client",
     "server",
     "utils",
