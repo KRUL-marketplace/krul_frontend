@@ -1,16 +1,13 @@
-import { Header } from '@/client/ui/molecules/header/header';
-import { Products } from '@client/ui/organisms/products/products';
-import { Shops } from '@client/ui/organisms/shops/shops';
+import Link from 'next/link';
+
+import css from './main.module.scss';
+import { Typography } from '@mui/material';
 
 const Home = () => {
 	return (
-		<>
-			<Header />
-			<main>
-				{/*<Shops />*/}
-				<Products />
-			</main>
-		</>
+		<Link href={'/shops'} className={css.demoLink}>
+			<Typography>Shops</Typography>
+		</Link>
 	);
 };
 

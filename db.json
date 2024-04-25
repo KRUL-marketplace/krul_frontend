@@ -1,0 +1,78 @@
+{
+  "shops": [
+    {
+      "title": "Queens",
+      "products": [
+        {
+          "title": "Product1",
+          "price": "1000"
+        },
+        {
+          "title": "Product1",
+          "price": "1000"
+        },
+        {
+          "title": "Product1",
+          "price": "1000"
+        }
+      ]
+    },
+    {
+      "title": "Nike",
+      "products": [
+        {
+          "title": "Product1",
+          "price":  "1000"
+        },
+        {
+          "title": "Product1",
+          "price":  "1000"
+        },
+        {
+          "title": "Product1",
+          "price":  "1000"
+        }
+      ]
+    },
+    {
+      "title": "Adidas",
+      "products": [
+        {
+          "title": "Product1",
+          "price":  "1000"
+        },
+        {
+          "title": "Product1",
+          "price":  "1000"
+        },
+        {
+          "title": "Product1",
+          "price":  "1000"
+        }
+      ]
+    }
+  ],
+
+  "products": [
+    {
+      "title": "Queens",
+      "price": "100",
+      "shop": "Queens"
+    },
+    {
+      "title": "Nike",
+      "price": "100",
+      "shop": "Nike"
+    },
+    {
+      "title": "Nike",
+      "price": "100",
+      "shop": "Nike"
+    },
+    {
+      "title": "Adidas",
+      "price": "100",
+      "shop": "Adidas"
+    }
+  ]
+}
