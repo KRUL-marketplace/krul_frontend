@@ -28,7 +28,7 @@ export default function RootLayout({
 			<body>
 				<Providers>
 					<Header />
-					<main style={{ paddingTop: '3rem' }}>{children}</main>
+					<main style={{ paddingTop: '4.6rem' }}>{children}</main>
 				</Providers>
 			</body>
 		</html>
