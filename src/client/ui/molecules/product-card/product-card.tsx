@@ -3,11 +3,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BaseProduct } from '@app/shops/[shop]/[product]/product.model';
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import { IconButton } from '@client/ui/atoms/iconButton/iconButton';
-import { BaseProductProps } from '@client/ui/molecules/product-card/product.model';
 
 import cx from 'classnames';
 
@@ -20,11 +21,11 @@ export const Product = ({
 	isFavorite = true,
 	iconSize = 'large',
 	handleFavorite,
-}: BaseProductProps) => {
+}: BaseProduct) => {
 	const isFavouriteClass = cx(css.product__favourite, isFavorite ? css.product_favourite_active : '');
 
 	return (
-		<Link href={'#'} className={css.product}>
+		<Link href={`/shops/Queens/${title}`} className={css.product}>
 			<div className={css.product__imageWrapper}>
 				<Image
 					src={image}

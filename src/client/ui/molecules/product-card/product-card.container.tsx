@@ -2,10 +2,11 @@
 
 import React from 'react';
 
-import { Product } from '@client/ui/molecules/product-card/product-card';
-import { BaseProductProps } from '@client/ui/molecules/product-card/product.model';
+import { BaseProduct } from '@app/shops/[shop]/[product]/product.model';
 
-export const ProductContainer = (props: BaseProductProps) => {
+import { Product } from '@client/ui/molecules/product-card/product-card';
+
+export const ProductContainer = (props: BaseProduct) => {
 	const [isFavorite, setIsFavorite] = React.useState<boolean>(false);
 
 	const handleFavorite = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

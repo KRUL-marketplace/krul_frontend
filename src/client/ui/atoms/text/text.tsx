@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 
-import { Typography, TypographyProps } from '@mui/material';
+interface TextProps extends HTMLProps<HTMLDivElement> {
+	component?: string;
+}
 
-export const Text = (props: TypographyProps) => {
-	return <Typography {...props} />;
+export const Text = (props: TextProps) => {
+	return (
+		<div is={props.component} {...props}>
+			{props.children}
+		</div>
+	);
 };
