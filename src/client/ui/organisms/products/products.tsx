@@ -1,14 +1,15 @@
 import React from 'react';
 
+import { BaseProduct } from '@app/shops/[shop]/[product]/product.model';
+
 import { Grid, GridItem } from '@client/ui/atoms/grid/grid';
 import { ProductContainer } from '@client/ui/molecules/product-card/product-card.container';
-import { BaseProductProps } from '@client/ui/molecules/product-card/product.model';
 
 interface Props<T> {
 	data: T[];
 }
 
-export const Products = <T extends BaseProductProps>({ data }: Props<T>) => {
+export const Products = <T extends BaseProduct>({ data }: Props<T>) => {
 	return (
 		<Grid spacing={2}>
 			{data.map((item: T) => (

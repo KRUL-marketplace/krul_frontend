@@ -7,7 +7,7 @@ interface ServiceProductProps {
 	handleFavorite?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export interface BaseProductProps extends ServiceProductProps {
+export interface BaseProduct extends ServiceProductProps {
 	title: string;
 	image: StaticImageData | string;
 	price: number;

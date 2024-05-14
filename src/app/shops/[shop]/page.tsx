@@ -9,9 +9,7 @@ const Page = async ({ params }: { params: { shop: string } }) => {
 
 	return (
 		<>
-			<Text variant={'h1'} textAlign={'center'}>
-				{params.shop}
-			</Text>
+			<Text component={'h1'}>{params.shop}</Text>
 			<Products data={products} />
 		</>
 	);
