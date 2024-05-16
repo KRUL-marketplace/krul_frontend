@@ -1,13 +1,39 @@
-import Link from 'next/link';
+'use client';
 
-import css from './main.module.scss';
-import { Typography } from '@mui/material';
+import { useMainButton } from '@tma.js/sdk-react';
+import { useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import { Title } from '@ui/atoms/text/text';
+
+import { handleMainButton } from '@telegram/tma-actions';
 
 const Home = () => {
+	const mainButton = useMainButton();
+	const router = useRouter();
+
+	useEffect(() => {
+		mainButton.show();
+
+		mainButton.setParams({
+			text: 'Shops',
+			isVisible: true,
+		});
+
+		handleMainButton(() => router.push('/shops'));
+
+		return () => {
+			mainButton.hide();
+		};
+	}, [mainButton, router]);
+
 	return (
-		<Link href={'/shops'} className={css.demoLink}>
-			<Typography>Shops</Typography>
-		</Link>
+		<>
+			<Title level={'1'} style={{ textAlign: 'center' }}>
+				Welcome
+			</Title>
+		</>
 	);
 };
 

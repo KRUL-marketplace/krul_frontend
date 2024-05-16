@@ -2,8 +2,11 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
-import RootHead from '@/client/ui/helpers/head';
-import { Header } from '@client/ui/molecules/header/header';
+import '@telegram-apps/telegram-ui/dist/styles.css';
+
+import RootHead from '@ui/helpers/head';
+import { Main } from '@ui/helpers/main/main';
+import { Header } from '@ui/molecules/header/header';
 
 import '@/utils/styles/global.scss';
 import '@/utils/styles/normalize.css';
@@ -27,8 +30,10 @@ export default function RootLayout({
 			<RootHead />
 			<body>
 				<Providers>
-					<Header />
-					<main style={{ paddingTop: '4.6rem' }}>{children}</main>
+					<Main>
+						<Header />
+						{children}
+					</Main>
 				</Providers>
 			</body>
 		</html>

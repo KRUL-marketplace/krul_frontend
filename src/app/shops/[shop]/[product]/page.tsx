@@ -1,10 +1,12 @@
+'use client';
+
 import React from 'react';
 
 import Image from 'next/image';
 
 import { Button } from '@mui/material';
 
-import { Text } from '@client/ui/atoms/text/text';
+import { Text } from '@ui/atoms/text/text';
 
 import example1 from '../../../../../public/images/example 1.png';
 
@@ -41,11 +43,7 @@ const Page = ({}: Props) => {
 				<div className={css.product__colors}>
 					<Text className={css.product__helperText}>Цвет</Text>
 				</div>
-				<div className={css.product__mainButton}>
-					<Button variant={'contained'} fullWidth size={'large'}>
-						Оформить
-					</Button>
-				</div>
+				<div className={css.product__mainButton}>{/*<MainButton text={'Оформить'} onClick={() => {}} />*/}</div>
 			</div>
 		</div>
 	);

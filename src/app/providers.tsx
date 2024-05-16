@@ -1,23 +1,32 @@
 'use client';
 
+import { SDKProvider } from '@tma.js/sdk-react';
 import { ReactNode } from 'react';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
-import { MediaContextProvider } from '@/client/ui/helpers/media';
-
-import theme from '@theme';
+import { AppRoot } from '@telegram-apps/telegram-ui';
 
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
+import { MediaContextProvider } from '@/ui/helpers/media';
+
+import theme from '@theme';
+
 export function Providers({ children }: { children: ReactNode }) {
 	return (
 		<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-			<ThemeProvider theme={theme}>
+			{/*<ThemeProvider theme={theme}>*/}
+			<AppRoot>
 				<CssBaseline />
-				<MediaContextProvider>{children}</MediaContextProvider>
-			</ThemeProvider>
+				<MediaContextProvider>
+					<SDKProvider acceptCustomStyles debug>
+						{children}
+					</SDKProvider>
+				</MediaContextProvider>
+			</AppRoot>
+			{/*</ThemeProvider>*/}
 		</AppRouterCacheProvider>
 	);
 }

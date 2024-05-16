@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Grid, GridItem } from '@client/ui/atoms/grid/grid';
-import { ShopCardContainer } from '@client/ui/molecules/shop-card/shop-card.container';
-
+import { Grid, GridItem } from '@ui/atoms/grid/grid';
+import { Title } from '@ui/atoms/text/text';
+import { ShopCardContainer } from '@ui/molecules/shop-card/shop-card.container';
 import { v4 as uuid } from 'uuid';
 
 import css from './shops.module.scss';
@@ -24,8 +24,10 @@ const Page = async ({}: Props) => {
 	const shops: any[] = await getShops();
 
 	return (
-		<div className={css.shops}>
-			<h1 className={css.shops__title}>Магазины</h1>
+		<>
+			<Title level={'1'} className={css.shops__title}>
+				Магазины
+			</Title>
 			<Grid spacing={2}>
 				{shops.map(item => {
 					const id = uuid();
@@ -36,7 +38,7 @@ const Page = async ({}: Props) => {
 					);
 				})}
 			</Grid>
-		</div>
+		</>
 	);
 };
 

@@ -21,8 +21,8 @@
     "paths": {
       "@*": ["./src/*"],
       "@utils": ["./src/utils"],
-      "@client": ["./src/client"],
-      "@server": ["./src/server"],
+      "@ui": ["./src/ui"],
+      "@telegram": ["./src/telegram"],
       "@public": ["./public"],
     }
   },
