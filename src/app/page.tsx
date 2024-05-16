@@ -1,32 +1,41 @@
 'use client';
 
-import { useMainButton } from '@tma.js/sdk-react';
+import { MainButton, useThemeParams } from '@tma.js/sdk-react';
 import { useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
 import { Title } from '@ui/atoms/text/text';
 
-import { handleMainButton } from '@telegram/tma-actions';
+import { postEvent } from '@tma.js/sdk';
+
+const mainButton = new MainButton({
+	backgroundColor: '#000000',
+	isEnabled: true,
+	isVisible: true,
+	isLoaderVisible: false,
+	text: 'Shops',
+	textColor: '#ffffff',
+	postEvent,
+});
 
 const Home = () => {
-	const mainButton = useMainButton();
+	const theme = useThemeParams();
 	const router = useRouter();
 
 	useEffect(() => {
-		mainButton.show();
-
 		mainButton.setParams({
-			text: 'Shops',
+			backgroundColor: theme.buttonColor,
+			textColor: theme.buttonTextColor,
 			isVisible: true,
 		});
 
-		handleMainButton(() => router.push('/shops'));
+		mainButton.on('click', () => router.push('/shops'));
 
 		return () => {
-			mainButton.hide();
+			mainButton.isVisible ? mainButton.hide() : mainButton.show();
 		};
-	}, [mainButton, router]);
+	}, [router, theme]);
 
 	return (
 		<>
