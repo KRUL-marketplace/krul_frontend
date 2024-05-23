@@ -10,23 +10,21 @@ import { AppRoot } from '@telegram-apps/telegram-ui';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
-import { MediaContextProvider } from '@/ui/helpers/media';
-
 import theme from '@theme';
 
 export function Providers({ children }: { children: ReactNode }) {
 	return (
 		<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-			{/*<ThemeProvider theme={theme}>*/}
-			<AppRoot>
-				<CssBaseline />
-				<MediaContextProvider>
+			<ThemeProvider theme={theme}>
+				<AppRoot>
+					<CssBaseline />
+					{/*<MediaContextProvider>*/}
 					<SDKProvider acceptCustomStyles debug>
 						{children}
 					</SDKProvider>
-				</MediaContextProvider>
-			</AppRoot>
-			{/*</ThemeProvider>*/}
+					{/*</MediaContextProvider>*/}
+				</AppRoot>
+			</ThemeProvider>
 		</AppRouterCacheProvider>
 	);
 }

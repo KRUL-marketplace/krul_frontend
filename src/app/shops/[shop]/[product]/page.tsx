@@ -19,9 +19,7 @@ const Page = ({}: Props) => {
 		<div className={css.product}>
 			<Image src={example1} alt={'title'} className={css.product__image} priority />
 			<div className={css.product__wrapper}>
-				<Text component={'h3'} className={css.product__title}>
-					Product
-				</Text>
+				<Text className={css.product__title}>Product</Text>
 				<Text className={css.product__price}>18000 ₽</Text>
 				<div className={css.product__buttonGroup}>
 					<Button variant={'outlined'} size={'large'}>
