@@ -2,15 +2,16 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
-import RootHead from '@/client/ui/helpers/head';
-import { Header } from '@client/ui/molecules/header/header';
+import { Main } from '@app/main/main';
+import '@telegram-apps/telegram-ui/dist/styles.css';
+
+import { Header } from '@ui/molecules/header/header';
 
 import '@/utils/styles/global.scss';
 import '@/utils/styles/normalize.css';
 import '@/utils/styles/tokens/light/lightTheme.scss';
-
-import { fonts } from './fonts';
-import { Providers } from './providers';
+import { Providers } from '@utils/providers';
+import { fonts } from '@utils/styles/fonts';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -24,11 +25,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru" className={fonts.rubik.variable}>
-			<RootHead />
+			{/*<RootHead />*/}
 			<body>
 				<Providers>
-					<Header />
-					<main style={{ paddingTop: '4.6rem' }}>{children}</main>
+					<Main>
+						<Header />
+						{children}
+					</Main>
 				</Providers>
 			</body>
 		</html>

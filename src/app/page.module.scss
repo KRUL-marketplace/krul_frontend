@@ -1,12 +1,13 @@
-@import '@utils/styles/mixins';
-@import '@utils/styles/variables';
-@import '@utils/styles/tokens/light/lightTheme';
+@import '../utils/styles/mixins';
+@import '../utils/styles/variables';
+@import '../utils/styles/tokens/light/lightTheme';
 
 .shops {
 	&__title {
 		margin-bottom: 2rem;
-		//@include font-size($font-size-title-sm, $font-weight-title);
+		@include font-size($font-size-title-sm, $font-weight-title);
 		text-align: center;
+		color: $core-text-color;
 	}
 
 	@include responsive(tablet) {
@@ -25,5 +26,19 @@
 		&__title {
 			@include font-size($font-size-title-xl, $font-weight-title);
 		}
+	}
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 5px);
+	padding-bottom: 3rem;
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 0;
+		height: 100%;
 	}
 }

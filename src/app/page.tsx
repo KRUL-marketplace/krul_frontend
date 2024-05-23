@@ -1,13 +1,27 @@
-import Link from 'next/link';
+'use client';
 
-import css from './main.module.scss';
-import { Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@telegram-apps/telegram-ui';
+
+import { Title } from '@ui/atoms/text/text';
+
+import { useMainButtonTelegram } from '@platform/telegram/use-main-button-telegram';
+
+import { isTelegram } from '@platform/platform-check';
 
 const Home = () => {
+	const router = useRouter();
+
+	useMainButtonTelegram(() => router.push('/shops'), 'Shop');
+
 	return (
-		<Link href={'/shops'} className={css.demoLink}>
-			<Typography>Shops</Typography>
-		</Link>
+		<>
+			<Title level={'1'} style={{ textAlign: 'center' }}>
+				Welcome
+			</Title>
+			{!isTelegram() && <Button onClick={() => router.push('/shops')}>Shop</Button>}
+		</>
 	);
 };
 

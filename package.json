@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port=5002",
+    "tunnel": "while true; do \n ssh -p 443 -R0:localhost:8000 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
+    "fake_server": "npx json-server db.json --port=5001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port=8000",
     "lint": "next lint",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build"
@@ -18,9 +20,13 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
     "@mui/material-nextjs": "^5.15.11",
+    "@telegram-apps/telegram-ui": "^2.1.3",
+    "@tma.js/sdk-react": "^2.1.2",
+    "@twa-dev/sdk": "^7.0.0",
     "framer-motion": "^11.1.2",
     "next": "14.2.1",
     "react": "^18",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18"
   },
   "devDependencies": {

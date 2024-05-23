@@ -1,0 +1,46 @@
+@import '@/utils/styles/tokens/light/lightTheme.scss';
+@import '@/utils/styles/mixins.scss';
+
+.header {
+	width: 100%;
+	background-color: $core-bg-color;
+	overflow: hidden;
+	z-index: 9;
+	padding: 0.5rem 1rem 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&_menu {
+		width: 80px;
+	}
+
+	&_logo {
+	}
+
+	&_icons {
+		display: flex;
+	}
+
+	&_search {
+	}
+
+	&_profile {
+	}
+
+	&_favorites {
+	}
+
+	&_select {
+		width: 140px;
+		height: 64px;
+		background: #ccc;
+	}
+
+	&_searchBar {
+		height: 64px;
+		border: 1px solid;
+		width: 100%;
+	}
+}
