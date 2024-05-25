@@ -3,7 +3,7 @@
 import { MainButton as TMAMainButton, useThemeParams } from '@tma.js/sdk-react';
 import { useEffect } from 'react';
 
-import { isTelegram } from '@platform/platform-check';
+import { useTMACheck } from '@platform/platform-check';
 import { postEvent } from '@tma.js/sdk';
 
 type UseMainButtonType = (onClick: () => void, text?: string) => void;
@@ -39,4 +39,8 @@ export const useMainButton: UseMainButtonType = (onClick, text) => {
 	}, [onClick, text, theme.buttonColor, theme.buttonTextColor]);
 };
 
-export const useMainButtonTelegram = isTelegram() ? useMainButton : () => {};
+export const useMainButtonTelegram = () => {
+	const isTMA = useTMACheck();
+
+	return isTMA ? useMainButton : () => {};
+};

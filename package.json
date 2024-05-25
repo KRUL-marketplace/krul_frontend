@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=5002",
-    "tunnel": "while true; do \n ssh -p 443 -R0:localhost:8000 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
+    "tunnel": "while true; do \n ssh -p 443 -R0:localhost:5002 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
+    "tunnel:build": "while true; do \n ssh -p 443 -R0:localhost:8000 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
     "fake_server": "npx json-server db.json --port=5001",
     "build": "next build",
     "start": "next start --port=8000",
