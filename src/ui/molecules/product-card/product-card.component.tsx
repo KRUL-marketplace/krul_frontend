@@ -1,46 +1,43 @@
 import React from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
-import { BaseProduct } from '@app/shops/[shop]/[product]/product.model';
+import { Product } from '@app/brands/[brand]/[product]/product.model';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import { IconButton } from '@ui/atoms/iconButton/iconButton';
-import { Caption, Subheading, Text } from '@ui/atoms/text/text';
+import { Caption, Subheading } from '@ui/atoms/text/text';
 
 import cx from 'classnames';
 
 import css from './product-card.module.scss';
+import { ROUTES } from '@api/routes';
 
-export const Product = ({
-	title,
-	price,
-	image,
-	isFavorite = true,
-	iconSize = 'large',
-	handleFavorite,
-}: BaseProduct) => {
+export const ProductCardComponent = ({ id, info, isFavorite = true, iconSize = 'large', handleFavorite }: Product) => {
+	const { name, price, slug, description, brand } = info;
+
 	const isFavouriteClass = cx(css.product__favourite, isFavorite ? css.product_favourite_active : '');
 
 	return (
-		<Link href={`/shops/Queens/${title}`} className={css.product}>
+		<Link
+			href={{ pathname: ROUTES.products.product(brand.info.slug, slug), query: { productId: id } }}
+			className={css.product}>
 			<div className={css.product__imageWrapper}>
-				<Image
-					src={image}
-					alt={title}
-					className={css.product__image}
-					layout={'fill'}
-					objectFit={'cover'}
-					objectPosition={'center'}
-				/>
+				{/*<Image*/}
+				{/*	src={image}*/}
+				{/*	alt={title}*/}
+				{/*	className={css.product__image}*/}
+				{/*	layout={'fill'}*/}
+				{/*	objectFit={'cover'}*/}
+				{/*	objectPosition={'center'}*/}
+				{/*/>*/}
 			</div>
 			<div className={css.product__footer}>
 				<div className={css.product__texts}>
 					<Subheading level={'1'} weight={'2'} className={css.product__title} caps plain>
-						{title}
+						{name}
 					</Subheading>
 					<Caption level={'1'} className={css.product__price}>
 						{price} ₽

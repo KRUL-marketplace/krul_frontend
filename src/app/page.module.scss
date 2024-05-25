@@ -2,7 +2,7 @@
 @import '../utils/styles/variables';
 @import '../utils/styles/tokens/light/lightTheme';
 
-.shops {
+.brands {
 	&__title {
 		margin-bottom: 2rem;
 		@include font-size($font-size-title-sm, $font-weight-title);

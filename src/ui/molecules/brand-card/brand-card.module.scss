@@ -1,11 +1,11 @@
 @import '@/utils/styles/mixins.scss';
 @import '@/utils/styles/variables.scss';
 
-.shopCardContainer {
+.brandCardContainer {
 	margin-top: 3rem;
 }
 
-.shopCard {
+.brandCard {
 	transition: $transition;
 	border-radius: 0.5rem;
 	box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;

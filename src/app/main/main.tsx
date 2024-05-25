@@ -12,7 +12,7 @@ export const Main = (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 		createPlatform().then(res => res.init());
 	}, []);
 
-	useBackButtonTelegram();
+	useBackButtonTelegram()();
 
 	return (
 		<>

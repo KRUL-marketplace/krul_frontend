@@ -1,25 +1,19 @@
 'use client';
 
-import WebApp from '@twa-dev/sdk';
+import { useEffect, useState } from 'react';
 
-export const isTelegram = () => {
-	return typeof window !== 'undefined' ? WebApp.platform !== 'unknown' : false;
+import { isTMA } from '@tma.js/sdk';
+
+export const useTMACheck = () => {
+	const [isTelegram1, setIsTelegram] = useState(true);
+
+	useEffect(() => {
+		isTMA().then(res => setIsTelegram(res));
+
+		return () => {
+			setIsTelegram(false);
+		};
+	}, []);
+
+	return isTelegram1;
 };
-//
-// import { useEffect, useState } from 'react';
-//
-// import { isTMA } from '@tma.js/sdk';
-//
-// export const useTMACheck = () => {
-// 	const [isTelegram, setIsTelegram] = useState(false);
-//
-// 	useEffect(() => {
-// 		isTMA().then(res => setIsTelegram(res));
-//
-// 		return () => {
-// 			setIsTelegram(false);
-// 		};
-// 	}, []);
-//
-// 	return isTelegram;
-// };
