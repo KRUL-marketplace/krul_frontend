@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=5002",
-    "tunnel": "while true; do \n ssh -p 443 -R0:localhost:5002 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
-    "tunnel:build": "while true; do \n ssh -p 443 -R0:localhost:8000 -L4300:localhost:4300 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 pOeWpiIFT1X+qr@eu.a.pinggy.io     ; \nsleep 10; done",
+    "tunnel": "ssh -p 443 -R0:localhost:5002 -L4300:localhost:4300 -o StrictHostKeyChecking=no  pOeWpiIFT1X@a.pinggy.io",
+    "tunnel:build": "ssh -p 443 -R0:localhost:8000 -L4300:localhost:4300 -o StrictHostKeyChecking=no  pOeWpiIFT1X@a.pinggy.io",
     "fake_server": "npx json-server db.json --port=5001",
     "build": "next build",
     "start": "next start --port=8000",
@@ -28,7 +28,8 @@
     "next": "14.2.1",
     "react": "^18",
     "react-device-detect": "^2.2.3",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@artsy/fresnel": "^7.1.4",
@@ -45,6 +46,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/ua-parser-js": "^0.7.39",
     "classnames": "^2.5.1",
     "css-loader": "^7.1.1",
     "eslint": "^8.6.0",
@@ -58,6 +60,7 @@
     "storybook": "^8.0.6",
     "style-loader": "^4.0.0",
     "typescript": "^5",
+    "ua-parser-js": "^1.0.37",
     "uuid": "^9.0.1",
     "vitest": "^1.4.0"
   },

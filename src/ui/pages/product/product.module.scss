@@ -1,6 +1,6 @@
-@import '@utils/styles/mixins';
-@import '@utils/styles/variables';
-@import '@utils/styles/tokens/light/lightTheme';
+@import '../../../utils/styles/mixins';
+@import '../../../utils/styles/variables';
+@import '../../../utils/styles/tokens/light/lightTheme';
 
 .product {
 	font-family: $font-family-secondary;

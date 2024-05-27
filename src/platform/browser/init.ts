@@ -9,7 +9,7 @@ export const colorScheme: Record<string, string> = {
 	'--tg-theme-secondary-bg-color': '#efeff3',
 	'--tg-theme-text-color': '#000000',
 	'--tg-theme-section-bg-color': '#ffffff',
-	'--tg-theme-header-bg-color': '#efeff3',
+	'--tg-theme-header-bg-color': '#212121',
 	'--tg-theme-accent-text-color': '#2481cc',
 	'--tg-color-scheme': 'light',
 	'--tg-viewport-height': '100vh',
