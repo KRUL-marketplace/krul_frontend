@@ -4,12 +4,12 @@ import { useCallback, useEffect } from 'react';
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import { useTMACheck } from '@platform/platform-check';
-import { BackButton, postEvent } from '@tma.js/sdk';
-
-const backButton = new BackButton(false, '6.0', postEvent);
+import { isTelegram } from '@platform/platform-check';
+import { initBackButton } from '@tma.js/sdk';
 
 const useBackButton = () => {
+	const backButton = initBackButton();
+
 	const pathname = usePathname();
 	const { back } = useRouter();
 
@@ -30,8 +30,4 @@ const useBackButton = () => {
 	}, [onClick]);
 };
 
-export const useBackButtonTelegram = () => {
-	const isTMA = useTMACheck();
-
-	return isTMA ? useBackButton : () => {};
-};
+export const useBackButtonTelegram = isTelegram() ? useBackButton : () => {};

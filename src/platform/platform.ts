@@ -2,6 +2,7 @@ import createTelegramPlatform from '@platform/telegram/init';
 import { Language } from '@platform/telegram/models';
 
 import createBrowserPlatform from '@platform/browser/init';
+import { isTelegram } from '@platform/platform-check';
 import { isTMA } from '@tma.js/sdk';
 
 export type PlatformTheme = {
@@ -28,8 +29,10 @@ export interface Platform {
 	getLanguage(): Language;
 }
 
-export const createPlatform = async () => {
-	const res = await isTMA();
+export const createPlatform = () => {
+	const res = isTelegram();
 
 	return res ? createTelegramPlatform() : createBrowserPlatform();
 };
+
+export const platform = createPlatform();

@@ -9,9 +9,9 @@ import { Product } from '@app/brands/[brand]/[product]/product.model';
 import { Button } from '@mui/material';
 
 import { Text } from '@ui/atoms/text/text';
-import css from '@ui/pages/product.module.scss';
+import css from '@ui/pages/product/product.module.scss';
 
-import example1 from '../../../public/images/example 1.png';
+import example1 from '../../../../public/images/example 1.png';
 
 interface Props {
 	data: Product;

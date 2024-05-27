@@ -42,3 +42,38 @@
 		height: 100%;
 	}
 }
+
+.home {
+	&__overlay {
+		position: absolute;
+		bottom: -5px;
+		width: 100%;
+		height: 50%;
+		background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 100%);
+		z-index: 100;
+		padding-top: 12rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	&__title {
+		@include font-size($font-size-title-lg, $font-weight-title);
+	}
+
+	&__caption {
+		@include font-size($font-size-caption-md);
+	}
+
+	&__title,
+	&__caption {
+		color: #fff;
+	}
+}

@@ -1,30 +1,19 @@
 'use client';
 
-import { MainButton as TMAMainButton, useThemeParams } from '@tma.js/sdk-react';
+import { initMainButton } from '@tma.js/sdk-react';
 import { useEffect } from 'react';
 
-import { useTMACheck } from '@platform/platform-check';
-import { postEvent } from '@tma.js/sdk';
+import { isTelegram } from '@platform/platform-check';
 
 type UseMainButtonType = (onClick: () => void, text?: string) => void;
 
-const mainButton = new TMAMainButton({
-	backgroundColor: '#000000',
-	isEnabled: true,
-	isVisible: false,
-	isLoaderVisible: false,
-	text: 'Continue',
-	textColor: '#ffffff',
-	postEvent,
-});
-
 export const useMainButton: UseMainButtonType = (onClick, text) => {
-	const theme = useThemeParams();
+	const mainButton = initMainButton();
 
 	useEffect(() => {
 		mainButton.setParams({
-			backgroundColor: theme.buttonColor,
-			textColor: theme.buttonTextColor,
+			backgroundColor: '#000',
+			textColor: '#fff',
 			isVisible: true,
 			text,
 		});
@@ -36,11 +25,7 @@ export const useMainButton: UseMainButtonType = (onClick, text) => {
 			mainButton.hideLoader();
 			mainButton.setParams({ isVisible: false });
 		};
-	}, [onClick, text, theme.buttonColor, theme.buttonTextColor]);
+	}, [onClick, text]);
 };
 
-export const useMainButtonTelegram = () => {
-	const isTMA = useTMACheck();
-
-	return isTMA ? useMainButton : () => {};
-};
+export const useMainButtonTelegram = isTelegram() ? useMainButton : () => {};

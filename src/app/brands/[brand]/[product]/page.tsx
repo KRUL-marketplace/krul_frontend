@@ -7,9 +7,9 @@ import { Product } from '@app/brands/[brand]/[product]/product.model';
 
 import { Button } from '@mui/material';
 
-import css from '../../../../ui/pages/product.module.scss';
+import css from '../../../../ui/pages/product/product.module.scss';
 import { Text } from '@ui/atoms/text/text';
-import { ProductPage } from '@ui/pages/product.page';
+import { ProductPage } from '@ui/pages/product/product.page';
 
 import example1 from '../../../../../public/images/example 1.png';
 

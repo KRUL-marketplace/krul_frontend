@@ -24,7 +24,7 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="ru" className={fonts.rubik.variable}>
+		<html lang="ru" className={fonts.rubik.variable} style={{ overflow: 'hidden' }}>
 			{/*<RootHead />*/}
 			<body>
 				<Providers>
