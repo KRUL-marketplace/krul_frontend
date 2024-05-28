@@ -16,7 +16,7 @@ export function Providers({ children }: { children: ReactNode }) {
 	return (
 		<AppRouterCacheProvider options={{ enableCssLayer: true }}>
 			<ThemeProvider theme={theme}>
-				<AppRoot>
+				<AppRoot appearance={'light'}>
 					<CssBaseline />
 					{/*<MediaContextProvider>*/}
 					<SDKProvider acceptCustomStyles debug>

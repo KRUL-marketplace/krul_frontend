@@ -7,6 +7,9 @@ export const getBrands = async () => {
 		headers: {
 			Accept: 'application/json',
 		},
+		next: {
+			revalidate: 100000,
+		},
 	});
 
 	if (!response.ok) {

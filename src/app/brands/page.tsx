@@ -13,15 +13,15 @@ const BrandsPage = async () => {
 
 	return (
 		<>
-			<Title level={'1'} className={css.shops__title}>
+			<Title level={'1'} className={css.brands__title}>
 				Магазины
 			</Title>
-			<Grid spacing={2}>
+			<Grid spacing={2} justifyContent={'flex-start'}>
 				{brands.map(item => {
 					const id = item.id;
 
 					return (
-						<GridItem item xs={10} sm={6} md={5} lg={3} key={id}>
+						<GridItem item xs={6} sm={6} md={5} lg={3} key={id}>
 							<BrandContainer id={id} info={item.info} />
 						</GridItem>
 					);
