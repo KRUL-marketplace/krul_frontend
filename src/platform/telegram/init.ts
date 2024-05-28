@@ -4,8 +4,7 @@ import { cssVarToValue } from '@platform/telegram/css-var-to-value';
 import { expandWebApp, openExternalLink, openTelegramLink } from '@platform/telegram/tma-actions';
 
 import { Platform, PlatformTheme } from '@platform/platform';
-import { initClosingBehavior } from '@tma.js/sdk';
-import { InitDataParsed, retrieveLaunchParams } from '@tma.js/sdk';
+import { InitDataParsed, initClosingBehavior, retrieveLaunchParams } from '@tma.js/sdk';
 
 export interface TelegramPlatform extends Platform {
 	getInitData(): InitDataParsed | undefined;
@@ -47,11 +46,11 @@ const createTelegramPlatform = (): TelegramPlatform => {
 		textColor,
 	} = colorScheme;
 
-	const { initDataRaw, initData, startParam } = retrieveLaunchParams();
+	const { initDataRaw, initData, startParam, themeParams } = retrieveLaunchParams();
 	const miniApp = initMiniApp();
 
 	const closingBehavior = initClosingBehavior();
-
+	console.log(themeParams);
 	return {
 		init: () => {
 			miniApp.ready();

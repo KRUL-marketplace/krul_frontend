@@ -1,5 +1,6 @@
 @import '@/utils/styles/mixins.scss';
 @import '@/utils/styles/variables.scss';
+@import '@utils/styles/tokens/light/lightTheme';
 
 .brandCardContainer {
 	margin-top: 3rem;
@@ -15,7 +16,7 @@
 	display: block;
 
 	text-decoration: none;
-	color: inherit;
+	color: $core-text-color;
 
 	&:hover {
 		transform: scale($scale-hover);
@@ -34,13 +35,10 @@
 	}
 
 	&__image {
-		border-radius: inherit;
-		min-height: 15rem;
 		width: 100%;
 		height: auto;
 	}
 
 	&__title {
-		margin-top: 0.2rem;
 	}
 }

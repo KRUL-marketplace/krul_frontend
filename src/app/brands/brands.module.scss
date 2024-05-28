@@ -5,8 +5,8 @@
 .brands {
 	&__title {
 		margin-bottom: 2rem;
-		//@include font-size($font-size-title-sm, $font-weight-title);
 		text-align: center;
+		color: $core-text-color;
 	}
 
 	@include responsive(tablet) {

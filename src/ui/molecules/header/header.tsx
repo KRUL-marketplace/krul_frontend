@@ -1,6 +1,5 @@
 'use client';
 
-import { useThemeParams } from '@tma.js/sdk-react';
 import React from 'react';
 
 import Link from 'next/link';
@@ -22,7 +21,7 @@ export const Header = ({}: Props) => {
 	const pathname = usePathname();
 
 	const theme = platform.getTheme();
-	console.log(theme.headerBackgroundColor);
+
 	return (
 		<div className={css.header} style={{ background: pathname === '/' ? theme.headerBackgroundColor : undefined }}>
 			{/*<Media at="mobile">*/}
