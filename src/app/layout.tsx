@@ -8,10 +8,10 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 
 import { Header } from '@ui/molecules/header/header';
 
-import '@/utils/styles/global.scss';
-import '@/utils/styles/normalize.css';
-import '@/utils/styles/tokens/light/lightTheme.scss';
 import { fonts } from '@utils/styles/fonts';
+
+import './global.css';
+import './theme.scss';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -24,9 +24,8 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="ru" className={fonts.rubik.variable}>
-			{/*<RootHead />*/}
-			<body>
+		<html lang="ru" className={fonts.roboto.className}>
+			<body className={'body'}>
 				<Providers>
 					<Main>
 						<Header />

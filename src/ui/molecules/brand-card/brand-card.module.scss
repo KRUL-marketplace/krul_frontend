@@ -1,6 +1,4 @@
-@import '@/utils/styles/mixins.scss';
-@import '@/utils/styles/variables.scss';
-@import '@utils/styles/tokens/light/lightTheme';
+@import '@app/theme.scss';
 
 .brandCardContainer {
 	margin-top: 3rem;
@@ -16,7 +14,6 @@
 	display: block;
 
 	text-decoration: none;
-	color: $core-text-color;
 
 	&:hover {
 		transform: scale($scale-hover);
@@ -39,6 +36,11 @@
 		height: auto;
 	}
 
-	&__title {
+	&__cell {
+		cursor: pointer;
+
+		&:hover {
+			background: transparent;
+		}
 	}
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { getBrands } from '@app/brands/api';
 
 import { Grid, GridItem } from '@ui/atoms/grid/grid';
-import { Title } from '@ui/atoms/text/text';
+import { Title } from '@ui/atoms/typography/title/title';
 import { BrandContainer } from '@ui/molecules/brand-card/brand-card.container';
 
 import css from './brands.module.scss';

@@ -4,21 +4,20 @@ import Link from 'next/link';
 
 import { Product } from '@app/brands/[brand]/[product]/product.model';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
 import { IconButton } from '@ui/atoms/iconButton/iconButton';
-import { Caption, Subheading } from '@ui/atoms/text/text';
+import { iconFavourites } from '@ui/atoms/icons/icon-favourites';
+import { Caption } from '@ui/atoms/typography/caption/caption';
+import { Subheadline } from '@ui/atoms/typography/subheadline/subheadline';
 
 import cx from 'classnames';
 
 import css from './product-card.module.scss';
 import { ROUTES } from '@api/routes';
 
-export const ProductCardComponent = ({ id, info, isFavorite = true, iconSize = 'large', handleFavorite }: Product) => {
+export const ProductCardComponent = ({ id, info, isFavorite = true, handleFavorite }: Product) => {
 	const { name, price, slug, description, brand } = info;
 
-	const isFavouriteClass = cx(css.product__favourite, isFavorite ? css.product_favourite_active : '');
+	const isFavouriteClass = isFavorite ? css.product_favourite_active : undefined;
 
 	return (
 		<Link
@@ -36,26 +35,21 @@ export const ProductCardComponent = ({ id, info, isFavorite = true, iconSize = '
 			</div>
 			<div className={css.product__footer}>
 				<div className={css.product__texts}>
-					<Subheading level={'1'} weight={'2'} className={css.product__title} caps plain>
+					<Subheadline level={'1'} weight={'2'} className={css.product__title} caps plain>
 						{name}
-					</Subheading>
+					</Subheadline>
 					<Caption level={'1'} className={css.product__price}>
 						{price} ₽
 					</Caption>
 				</div>
-				{isFavorite ? (
-					<IconButton
-						aria-label={'favourites'}
-						className={isFavouriteClass}
-						size={iconSize}
-						onClick={e => handleFavorite?.(e)}>
-						<FavoriteIcon fontSize={iconSize} />
-					</IconButton>
-				) : (
-					<IconButton aria-label={'favourites'} size={iconSize} onClick={e => handleFavorite?.(e)}>
-						<FavoriteBorderIcon fontSize={iconSize} />
-					</IconButton>
-				)}
+
+				<IconButton
+					aria-label={'favourites'}
+					mode={isFavorite ? 'bezeled' : 'outline'}
+					className={isFavouriteClass}
+					onClick={e => handleFavorite?.(e)}>
+					{iconFavourites}
+				</IconButton>
 			</div>
 		</Link>
 	);

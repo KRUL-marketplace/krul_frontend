@@ -2,7 +2,7 @@ import { Product } from '@app/brands/[brand]/[product]/product.model';
 import { getBrandById, getProductsByBrandId } from '@app/brands/[brand]/api';
 import { Brand } from '@app/brands/[brand]/brand.model';
 
-import { Title } from '@ui/atoms/text/text';
+import { Title } from '@ui/atoms/typography/title/title';
 import { Products } from '@ui/organisms/products/products';
 
 interface BrandsPageParams {

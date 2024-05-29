@@ -25,7 +25,7 @@ export const useMainButton: UseMainButtonType = (onClick, text) => {
 			mainButton.hideLoader();
 			mainButton.setParams({ isVisible: false });
 		};
-	}, [onClick, text]);
+	}, [onClick, text, mainButton]);
 };
 
 export const useMainButtonTelegram = isTelegram() ? useMainButton : () => {};

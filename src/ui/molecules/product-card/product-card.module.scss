@@ -1,7 +1,3 @@
-@import '@/utils/styles/mixins.scss';
-@import '@/utils/styles/variables.scss';
-@import '@/utils/styles/tokens/light/lightTheme.scss';
-
 .product {
 	display: flex;
 	flex-direction: column;
@@ -26,67 +22,13 @@
 		flex-direction: column;
 	}
 
-	&__title {
-		//@include font-size($font-size-product-title-sm, 700);
-		//text-transform: uppercase;
-	}
-
-	&__price {
-		//@include font-size($font-size-product-price-sm, 300);
-	}
-
 	&__image {
 		width: 100%;
 		display: block;
 		margin: 0 auto;
 	}
 
-	&__favourite svg {
-	}
-
-	&_favourite_active svg {
-		fill: $favourite-color;
-	}
-
-	@include responsive(mobile-large) {
-		&__title {
-			@include font-size($font-size-product-title-md, 700);
-		}
-
-		&__imageWrapper {
-			height: 35rem;
-		}
-	}
-
-	@include responsive(tablet-mini) {
-		&__title {
-			@include font-size($font-size-product-title-md, 700);
-		}
-	}
-
-	@include responsive(tablet) {
-		&__title {
-			@include font-size($font-size-product-title-md, 700);
-		}
-	}
-
-	@include responsive(laptop) {
-		&__title {
-			@include font-size($font-size-product-title-lg, 700);
-		}
-
-		&__imageWrapper {
-			height: 40rem;
-		}
-	}
-
-	@include responsive(desktop) {
-		&__title {
-			@include font-size($font-size-product-title-xl, 700);
-		}
-
-		&__imageWrapper {
-			height: 43rem;
-		}
+	&_favourite_active {
+		fill: var(--tg-theme-text-color);
 	}
 }

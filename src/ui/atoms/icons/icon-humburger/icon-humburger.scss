@@ -1,4 +1,4 @@
-@import '@/utils/styles/tokens/light/lightTheme.scss';
+@import '@app/theme.scss';
 
 .hamburger {
 	&__label {
@@ -9,7 +9,6 @@
 	}
 
 	&__stroke {
-		background: $core-action-color;
 		border-radius: 10px;
 		height: 2px;
 		margin: 4px 0;

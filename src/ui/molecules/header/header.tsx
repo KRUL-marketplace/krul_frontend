@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 import ShoppingBagOutlined from '@mui/icons-material/ShoppingBagOutlined';
 
@@ -13,43 +12,18 @@ import { Avatar } from '@ui/atoms/avatar/avatar';
 import profileSkeleton from '../../../../public/images/profile-skeleton.jpg';
 
 import css from './header.module.scss';
-import { platform } from '@platform/platform';
 
 interface Props {}
 
 export const Header = ({}: Props) => {
-	const pathname = usePathname();
-
-	const theme = platform.getTheme();
-
 	return (
-		<div className={css.header} style={{ background: pathname === '/' ? theme.headerBackgroundColor : undefined }}>
-			{/*<Media at="mobile">*/}
-			{/*	<div className={menuClass}>*/}
-			{/*		<Menu />*/}
-			{/*	</div>*/}
-			{/*</Media>*/}
-			{/*<Media greaterThan="mobile">*/}
-			{/*	<div className={logoClass}>*/}
-			{/*		<Link href="/">{iconLogo}</Link>*/}
-			{/*	</div>*/}
-			{/*</Media>*/}
-			{/*<Media at="mobile">*/}
-			{/*	<Link href="/">{iconLogo}</Link>*/}
-			{/*</Media>*/}
+		<div className={css.header}>
 			<Avatar src={profileSkeleton.src} />
-			<div className={css.header_icons}>
-				{/*<Link href={'#'} className={css.header_favourites}>*/}
-				{/*	<IconButton size={'large'} aria-label={'favourites'}>*/}
-				{/*		<FavoriteBorder fontSize={'large'} />*/}
-				{/*	</IconButton>*/}
-				{/*</Link>*/}
-				<Link href={'#'} className={css.header_cart}>
-					<IconButton size={'large'} aria-label={'shopping-cart'}>
-						<ShoppingBagOutlined fontSize={'large'} style={{ filter: pathname === '/' ? 'invert(100%)' : undefined }} />
-					</IconButton>
-				</Link>
-			</div>
+			<Link href={'#'}>
+				<IconButton size={'l'} mode={'outline'} aria-label={'shopping-cart'}>
+					<ShoppingBagOutlined fontSize={'large'} />
+				</IconButton>
+			</Link>
 		</div>
 	);
 };

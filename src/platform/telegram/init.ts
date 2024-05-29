@@ -15,18 +15,21 @@ export interface TelegramPlatform extends Platform {
 
 export const colorScheme: PlatformTheme = {
 	buttonColor: 'var(--tg-theme-button-color)',
-	buttonTextColor: 'var(--tg-theme-button-text-color)',
-	hintColor: 'var(--tg-theme-hint-color)',
-	accentTextColor: 'var(--tg-theme-accent-text-color)',
-	backgroundColor: 'var(--tg-theme-bg-color)',
-	destructiveTextColor: 'var(--tg-theme-destructive-text-color)',
-	headerBackgroundColor: 'var(--tg-theme-header-bg-color)',
+
 	linkColor: 'var(--tg-theme-link-color)',
+	hintColor: 'var(--tg-theme-hint-color)',
+
+	backgroundColor: 'var(--tg-theme-bg-color)',
 	secondaryBackgroundColor: 'var(--tg-theme-secondary-bg-color)',
+	headerBackgroundColor: 'var(--tg-theme-header-bg-color)',
 	sectionBackgroundColor: 'var(--tg-theme-section-bg-color)',
-	sectionHeaderTextColor: 'var(--tg-theme-section-header-text-color)',
-	subtitleTextColor: 'var(--tg-theme-subtitle-text-color)',
+
 	textColor: 'var(--tg-theme-text-color)',
+	accentTextColor: 'var(--tg-theme-accent-text-color)',
+	buttonTextColor: 'var(--tg-theme-button-text-color)',
+	subtitleTextColor: 'var(--tg-theme-subtitle-text-color)',
+	destructiveTextColor: 'var(--tg-theme-destructive-text-color)',
+	sectionHeaderTextColor: 'var(--tg-theme-section-header-text-color)',
 };
 
 const createTelegramPlatform = (): TelegramPlatform => {
@@ -46,11 +49,11 @@ const createTelegramPlatform = (): TelegramPlatform => {
 		textColor,
 	} = colorScheme;
 
-	const { initDataRaw, initData, startParam, themeParams } = retrieveLaunchParams();
+	const { initDataRaw, initData, startParam } = retrieveLaunchParams();
 	const miniApp = initMiniApp();
 
 	const closingBehavior = initClosingBehavior();
-	console.log(themeParams);
+
 	return {
 		init: () => {
 			miniApp.ready();
@@ -60,10 +63,11 @@ const createTelegramPlatform = (): TelegramPlatform => {
 			miniApp.setBgColor('#212121');
 			miniApp.setHeaderColor('#212121');
 		},
+		getPlatform: () => (navigator.userAgent.includes('AppleWebKit') ? 'ios' : 'material'),
 		getInitData: () => initData,
 		getTheme: () => {
 			return {
-				buttonColor: '#000' || cssVarToValue(buttonColor),
+				buttonColor: cssVarToValue(buttonColor),
 				hintColor: cssVarToValue(hintColor),
 				buttonTextColor: cssVarToValue(buttonTextColor),
 				accentTextColor: cssVarToValue(accentTextColor),

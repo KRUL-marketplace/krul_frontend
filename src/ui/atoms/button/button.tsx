@@ -1,7 +1,10 @@
 import React, { ButtonHTMLAttributes, ReactElement } from 'react';
-import cx from 'classnames';
-import './button.css';
+
 import { useAriaProperties } from '@/utils/hooks/hooks';
+
+import cx from 'classnames';
+
+import './button.css';
 
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'success' | 'danger';
@@ -74,7 +77,7 @@ export const Button = (props: ButtonProps) => {
 	return (
 		<button {...buttonProps} {...ariaAttributes} type="button" className={classes} disabled={disabled}>
 			<span className={textClasses}>{children}</span>
-			{icon && <div className={iconClass}>{icon}</div>}
+			{!!icon && <div className={iconClass}>{icon}</div>}
 		</button>
 	);
 };

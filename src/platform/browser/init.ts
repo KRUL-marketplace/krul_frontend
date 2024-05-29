@@ -15,7 +15,7 @@ export const colorScheme: Record<string, string> = {
 	'--tg-viewport-height': '100vh',
 	'--tg-theme-destructive-text-color': '#ff3b30',
 	'--tg-theme-button-color': '#2481cc',
-	'--tg-theme-bg-color': '#ffffff',
+	'--tg-theme-bg-color': '#fff',
 	'--tg-theme-subtitle-text-color': '#999999',
 	'--tg-theme-button-text-color': '#ffffff',
 	'--tg-theme-section-header-text-color': '#6d6d71',
@@ -30,6 +30,7 @@ const createBrowserPlatform = (): BrowserPlatform => {
 				document.documentElement.style.setProperty(variable, colorScheme[variable]);
 			}
 		},
+		getPlatform: () => (navigator.userAgent.includes('AppleWebKit') ? 'ios' : 'material'),
 		getInitData: () => undefined,
 		getTheme: () => ({
 			buttonColor: colorScheme['--tg-theme-button-color'],

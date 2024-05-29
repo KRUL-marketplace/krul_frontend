@@ -1,16 +1,20 @@
 'use client';
 
-import { forwardRef } from 'react';
+import {
+	IconButtonProps,
+	IconButton as TelegramIconButton,
+} from '@telegram-apps/telegram-ui/dist/components/Blocks/IconButton/IconButton';
 
-import Icon from '@mui/material/IconButton';
-import { IconButtonProps } from '@mui/material/IconButton';
+import classnames from 'classnames';
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
+import css from './iconButton.module.scss';
+
+export const IconButton = (props: IconButtonProps) => {
+	const classNames = classnames(css.iconButton, props.className);
+
 	return (
-		<Icon ref={ref} sx={{ color: '#000' }} {...props}>
+		<TelegramIconButton size={'l'} mode={'outline'} {...props} className={classNames}>
 			{props.children}
-		</Icon>
+		</TelegramIconButton>
 	);
-});
-
-IconButton.displayName = 'IconButton';
+};
