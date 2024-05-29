@@ -3,7 +3,8 @@ import React from 'react';
 import { Brand } from '@app/brands/[brand]/brand.model';
 
 interface ServiceProductProps {
-	iconSize?: 'small' | 'medium' | 'large';
+	iconSize?: 's' | 'm' | 'l';
+	iconMode?: 'plain' | 'outline' | 'bezeled' | 'gray' | undefined;
 	handleFavorite?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	isFavorite?: boolean;
 }

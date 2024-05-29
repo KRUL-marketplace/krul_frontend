@@ -1,0 +1,23 @@
+@import '@utils/styles/mixins';
+
+$favourite-color: var(--tg-theme-link-color);
+
+$container-padding: 0 1rem;
+$scale-hover: 1.02;
+$transition: 0.3s ease;
+
+.body {
+	background: var(--tg-theme-bg-color);
+}
+
+.container {
+	padding: $container-padding;
+
+	@include responsive(laptop) {
+		padding: 0.5rem 3rem;
+	}
+
+	@include responsive(desktop) {
+		padding: 0.5rem 3rem;
+	}
+}

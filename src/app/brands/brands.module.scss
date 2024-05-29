@@ -1,29 +1,5 @@
-@import '@utils/styles/mixins';
-@import '@utils/styles/variables';
-@import '@utils/styles/tokens/light/lightTheme';
-
 .brands {
 	&__title {
 		margin-bottom: 2rem;
-		text-align: center;
-		color: $core-text-color;
-	}
-
-	@include responsive(tablet) {
-		&__title {
-			@include font-size($font-size-title-md, $font-weight-title);
-		}
-	}
-
-	@include responsive(laptop) {
-		&__title {
-			@include font-size($font-size-title-lg, $font-weight-title);
-		}
-	}
-
-	@include responsive(desktop) {
-		&__title {
-			@include font-size($font-size-title-xl, $font-weight-title);
-		}
 	}
 }

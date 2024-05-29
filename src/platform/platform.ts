@@ -27,6 +27,7 @@ export interface Platform {
 	openInternalLink(link: string): void;
 	getTheme(): PlatformTheme;
 	getLanguage(): Language;
+	getPlatform(): 'ios' | 'material' | 'parent' | undefined;
 }
 
 export const createPlatform = () => {

@@ -19,7 +19,7 @@ const useBackButton = () => {
 
 	useEffect(() => {
 		pathname === '/' ? backButton.hide() : backButton.show();
-	}, [pathname]);
+	}, [pathname, backButton]);
 
 	useEffect(() => {
 		backButton.on('click', onClick);
@@ -27,7 +27,7 @@ const useBackButton = () => {
 		return () => {
 			backButton.off('click', onClick);
 		};
-	}, [onClick]);
+	}, [onClick, backButton]);
 };
 
 export const useBackButtonTelegram = isTelegram() ? useBackButton : () => {};

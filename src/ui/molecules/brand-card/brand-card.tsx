@@ -9,7 +9,7 @@ import { Brand } from '@app/brands/[brand]/brand.model';
 import { Card } from '@telegram-apps/telegram-ui';
 import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
 
-import { Text } from '@ui/atoms/text/text';
+import { Text } from '@ui/atoms/typography/text/text';
 
 import imageExample from '../../../../public/images/Queens.jpg';
 
@@ -21,12 +21,12 @@ export const BrandComponent = ({ id, info }: Brand) => {
 
 	return (
 		<Link href={{ pathname: ROUTES.brands.brand(slug), query: { brandId: id } }}>
-			<Card type="plain">
+			<Card type="ambient">
 				<React.Fragment key=".0">
 					<Image src={imageExample} alt={name} className={css.brandCard__image} />
 
-					<CardCell readOnly>
-						<Text className={css.brandCard__title}>{name}</Text>
+					<CardCell readOnly className={css.brandCard__cell}>
+						<Text>{name}</Text>
 					</CardCell>
 				</React.Fragment>
 			</Card>

@@ -4,6 +4,8 @@ import { DetailedHTMLProps, HTMLAttributes, useEffect } from 'react';
 
 import { useBackButtonTelegram } from '@platform/telegram/use-back-button';
 
+import classNames from 'classnames';
+
 import css from './main.module.scss';
 import { platform } from '@platform/platform';
 
@@ -16,7 +18,7 @@ export const Main = (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 
 	return (
 		<>
-			<main {...props} className={css.main}>
+			<main {...props} className={classNames('container', css.main)}>
 				<div className={css.main__wrapper}>{props.children}</div>
 			</main>
 		</>

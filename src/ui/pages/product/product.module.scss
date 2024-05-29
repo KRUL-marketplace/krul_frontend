@@ -1,10 +1,4 @@
-@import '../../../utils/styles/mixins';
-@import '../../../utils/styles/variables';
-@import '../../../utils/styles/tokens/light/lightTheme';
-
 .product {
-	font-family: $font-family-secondary;
-
 	&__image {
 		height: auto;
 		width: 100%;
@@ -19,20 +13,10 @@
 
 		border-top-right-radius: 3rem;
 		border-top-left-radius: 3rem;
-		background: #fff;
+		background: var(--tg-theme-secondary-bg-color);
 		margin-top: -2rem;
 		z-index: 1;
 		position: relative;
-	}
-
-	&__title {
-		text-transform: uppercase;
-		margin: 0.5rem 0;
-		@include font-size($font-size-product-title-sm);
-	}
-
-	&__price {
-		@include font-size($font-size-product-price-sm, 600);
 	}
 
 	&__buttonGroup {
@@ -40,28 +24,5 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 		margin: 2rem 0;
-
-		button {
-			border-radius: $border-radius-primary;
-			border-color: $core-primary-border-color;
-			color: $core-text-color;
-			width: 10rem;
-			height: 4rem;
-		}
-	}
-
-	&__helperText {
-		@include font-size($font-size-product-helper-text-sm);
-		margin-bottom: 1rem;
-	}
-
-	&__mainButton {
-		width: 100%;
-		button {
-			height: 4rem;
-			border-radius: $border-radius-primary;
-			border-color: $core-primary-border-color;
-			background: $core-primary-button-bg-color;
-		}
 	}
 }
