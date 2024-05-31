@@ -1,5 +1,5 @@
-import { Product } from '@app/brands/[brand]/[product]/product.model';
-import { Brand } from '@app/brands/[brand]/brand.model';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
+import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
 
 import { API } from '@api/api';
 

@@ -1,4 +1,4 @@
-import { Brand } from '@app/brands/[brand]/brand.model';
+import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
 
 import { API } from '@api/api';
 

@@ -8,11 +8,11 @@ import { isTelegram } from '@platform/platform-check';
 type UseMainButtonType = (onClick: () => void, text?: string) => void;
 
 export const useMainButton: UseMainButtonType = (onClick, text) => {
-	const mainButton = initMainButton();
+	const [mainButton, cleanMainButton] = initMainButton();
 
 	useEffect(() => {
 		mainButton.setParams({
-			backgroundColor: '#000',
+			bgColor: '#000',
 			textColor: '#fff',
 			isVisible: true,
 			text,
@@ -24,8 +24,9 @@ export const useMainButton: UseMainButtonType = (onClick, text) => {
 			mainButton.off('click', onClick);
 			mainButton.hideLoader();
 			mainButton.setParams({ isVisible: false });
+			cleanMainButton();
 		};
-	}, [onClick, text, mainButton]);
+	}, [onClick, text, mainButton, cleanMainButton]);
 };
 
 export const useMainButtonTelegram = isTelegram() ? useMainButton : () => {};

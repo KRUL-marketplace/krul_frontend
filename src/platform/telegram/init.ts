@@ -1,4 +1,4 @@
-import { Viewport, initMiniApp, initViewport } from '@tma.js/sdk-react';
+import { CleanupFn, Viewport, initMiniApp, initViewport } from '@tma.js/sdk-react';
 
 import { cssVarToValue } from '@platform/telegram/css-var-to-value';
 import { expandWebApp, openExternalLink, openTelegramLink } from '@platform/telegram/tma-actions';
@@ -11,6 +11,9 @@ export interface TelegramPlatform extends Platform {
 	getDataRaw(): string | undefined;
 	getStartParam(): string | undefined;
 	getViewport(): Promise<Viewport>;
+	destroyMiniApp: CleanupFn;
+	cleanClosingBehaviour: CleanupFn;
+	cleanViewport: CleanupFn;
 }
 
 export const colorScheme: PlatformTheme = {
@@ -50,18 +53,18 @@ const createTelegramPlatform = (): TelegramPlatform => {
 	} = colorScheme;
 
 	const { initDataRaw, initData, startParam } = retrieveLaunchParams();
-	const miniApp = initMiniApp();
+	const [miniApp, destroyMiniApp] = initMiniApp();
 
-	const closingBehavior = initClosingBehavior();
-
+	const [closingBehavior, cleanClosingBehaviour] = initClosingBehavior();
+	const [viewport, cleanViewport] = initViewport();
 	return {
 		init: () => {
 			miniApp.ready();
 			expandWebApp();
 			closingBehavior.enableConfirmation();
 
-			miniApp.setBgColor('#212121');
-			miniApp.setHeaderColor('#212121');
+			miniApp.setBgColor(`#${secondaryBackgroundColor}`);
+			miniApp.setHeaderColor(`#${headerBackgroundColor}`);
 		},
 		getPlatform: () => (navigator.userAgent.includes('AppleWebKit') ? 'ios' : 'material'),
 		getInitData: () => initData,
@@ -84,7 +87,7 @@ const createTelegramPlatform = (): TelegramPlatform => {
 		},
 		getDataRaw: () => initDataRaw,
 		getStartParam: () => startParam,
-		getViewport: async () => await initViewport(),
+		getViewport: async () => await viewport,
 		openInternalLink: (link: string) => openTelegramLink(link),
 
 		getLanguage: () => {
@@ -98,6 +101,9 @@ const createTelegramPlatform = (): TelegramPlatform => {
 			}
 		},
 		openExternalLink: (link: string, instantView?: boolean) => openExternalLink(link, instantView),
+		destroyMiniApp,
+		cleanClosingBehaviour,
+		cleanViewport,
 	};
 };
 
