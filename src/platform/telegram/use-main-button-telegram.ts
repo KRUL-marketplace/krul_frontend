@@ -8,25 +8,28 @@ import { isTelegram } from '@platform/platform-check';
 type UseMainButtonType = (onClick: () => void, text?: string) => void;
 
 export const useMainButton: UseMainButtonType = (onClick, text) => {
-	const [mainButton, cleanMainButton] = initMainButton();
+	const [mainButton] = initMainButton();
+
+	useEffect(() => {
+		mainButton.on('click', onClick);
+		mainButton.enable();
+
+		return () => {
+			mainButton.off('click', onClick);
+		};
+	}, [mainButton, onClick]);
 
 	useEffect(() => {
 		mainButton.setParams({
-			bgColor: '#000',
-			textColor: '#fff',
 			isVisible: true,
 			text,
 		});
 
-		mainButton.on('click', onClick);
-
 		return () => {
-			mainButton.off('click', onClick);
 			mainButton.hideLoader();
 			mainButton.setParams({ isVisible: false });
-			cleanMainButton();
 		};
-	}, [onClick, text, mainButton, cleanMainButton]);
+	}, [text, mainButton]);
 };
 
 export const useMainButtonTelegram = isTelegram() ? useMainButton : () => {};

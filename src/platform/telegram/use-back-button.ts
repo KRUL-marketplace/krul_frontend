@@ -8,7 +8,7 @@ import { isTelegram } from '@platform/platform-check';
 import { initBackButton } from '@tma.js/sdk';
 
 const useBackButton = () => {
-	const [backButton, cleanBackButton] = initBackButton();
+	const [backButton] = initBackButton();
 
 	const pathname = usePathname();
 	const { back } = useRouter();
@@ -21,9 +21,10 @@ const useBackButton = () => {
 		backButton.on('click', back);
 
 		return () => {
-			cleanBackButton();
+			backButton.off('click', back);
+			backButton.hide();
 		};
-	}, [back, backButton, cleanBackButton]);
+	}, [back, backButton]);
 };
 
 export const useBackButtonTelegram = isTelegram() ? useBackButton : () => {};
