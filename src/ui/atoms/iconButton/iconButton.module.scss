@@ -1,3 +1,18 @@
 .iconButton {
 	fill: var(--tg-theme-text-color);
+
+	&__icon {
+		&_small svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		&_medium svg {
+			width: 2rem;
+			height: 2rem;
+		}
+		&_large svg {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
 }

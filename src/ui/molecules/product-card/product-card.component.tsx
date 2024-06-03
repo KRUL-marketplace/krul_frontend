@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { Product } from '@app/brands/[brand]/[product]/product.model';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
 import { IconButton } from '@ui/atoms/iconButton/iconButton';
 import { iconFavourites } from '@ui/atoms/icons/icon-favourites';

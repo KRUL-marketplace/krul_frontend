@@ -4,9 +4,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { Product } from '@app/brands/[brand]/[product]/product.model';
-
-import { Button } from '@mui/material';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
 import { Text } from '@ui/atoms/typography/text/text';
 import css from '@ui/pages/product/product.module.scss';

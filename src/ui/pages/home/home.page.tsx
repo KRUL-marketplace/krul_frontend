@@ -5,6 +5,8 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { Button } from '@telegram-apps/telegram-ui';
+
 import { Caption } from '@ui/atoms/typography/caption/caption';
 import { LargeTitle } from '@ui/atoms/typography/largeTitle/large-title';
 
@@ -14,13 +16,15 @@ import models from '../../../../public/images/models.webp';
 
 import css from './home.module.scss';
 import { ROUTES } from '@api/routes';
+import { isTelegram } from '@platform/platform-check';
 
 interface Props {}
 
 export const HomePage = ({}: Props) => {
-	const router = useRouter();
+	const { push } = useRouter();
+	const isTMA = isTelegram();
 
-	const handleClick = () => router.push(ROUTES.brands.all);
+	const handleClick = () => push(ROUTES.brands.all);
 
 	useMainButtonTelegram(handleClick, 'Shop');
 
@@ -43,7 +47,11 @@ export const HomePage = ({}: Props) => {
 					<Caption>Discover the latest trends in fashion and accessories</Caption>
 				</div>
 			</div>
-			{/*{!isTG && <Button onClick={handleClick}>Shop</Button>}*/}
+			{!isTMA && (
+				<Button className={css.home__mainButton} onClick={handleClick}>
+					Shop
+				</Button>
+			)}
 		</div>
 	);
 };

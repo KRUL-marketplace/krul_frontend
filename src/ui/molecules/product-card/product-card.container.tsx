@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Product } from '@app/brands/[brand]/[product]/product.model';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
 import { ProductCardComponent } from '@ui/molecules/product-card/product-card.component';
 

@@ -1,17 +1,9 @@
 import React from 'react';
 
-import Image from 'next/image';
+import { getById } from '@app/(mainRoot)/brands/[brand]/[product]/api';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
-import { getById } from '@app/brands/[brand]/[product]/api';
-import { Product } from '@app/brands/[brand]/[product]/product.model';
-
-import { Button } from '@mui/material';
-
-import css from '../../../../ui/pages/product/product.module.scss';
-import { Text } from '@ui/atoms/typography/text/text';
 import { ProductPage } from '@ui/pages/product/product.page';
-
-import example1 from '../../../../../public/images/example 1.png';
 
 interface ProductsPageParams {
 	params: { product: string };
