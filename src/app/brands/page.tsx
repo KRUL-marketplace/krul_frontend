@@ -12,7 +12,7 @@ const BrandsPage = async () => {
 	const brands = await getBrands();
 
 	return (
-		<>
+		<div className={'container'}>
 			<Title level={'1'} className={css.brands__title}>
 				Магазины
 			</Title>
@@ -27,7 +27,7 @@ const BrandsPage = async () => {
 					);
 				})}
 			</Grid>
-		</>
+		</div>
 	);
 };
 

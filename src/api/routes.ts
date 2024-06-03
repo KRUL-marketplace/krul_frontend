@@ -7,4 +7,6 @@ export const ROUTES = {
 		all: '/products',
 		product: (brand: string, slug: string) => `/brands/${brand}/${slug}`,
 	},
+	cart: '/cart',
+	checkout: '/checkout',
 };

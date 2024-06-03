@@ -18,7 +18,7 @@ export const Main = (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 
 	return (
 		<>
-			<main {...props} className={classNames('container', css.main)}>
+			<main {...props} className={classNames(css.main)}>
 				<div className={css.main__wrapper}>{props.children}</div>
 			</main>
 		</>

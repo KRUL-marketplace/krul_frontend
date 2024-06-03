@@ -19,12 +19,12 @@ const BrandPage = async (props: BrandsPageParams) => {
 	const products: Product[] = await getProductsByBrandId(brandId);
 
 	return (
-		<>
+		<div className={'container'}>
 			<Title level={'1'} caps style={{ textAlign: 'center' }}>
 				{brand.info.name}
 			</Title>
 			<Products data={products} />
-		</>
+		</div>
 	);
 };
 
