@@ -1,6 +1,6 @@
-import { Product } from '@app/brands/[brand]/[product]/product.model';
-import { getBrandById, getProductsByBrandId } from '@app/brands/[brand]/api';
-import { Brand } from '@app/brands/[brand]/brand.model';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
+import { getBrandById, getProductsByBrandId } from '@app/(mainRoot)/brands/[brand]/api';
+import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
 
 import { Title } from '@ui/atoms/typography/title/title';
 import { Products } from '@ui/organisms/products/products';
@@ -22,6 +22,7 @@ const BrandPage = async (props: BrandsPageParams) => {
 		<div className={'container'}>
 			<Title level={'1'} caps style={{ textAlign: 'center' }}>
 				{brand.info.name}
+				brands
 			</Title>
 			<Products data={products} />
 		</div>

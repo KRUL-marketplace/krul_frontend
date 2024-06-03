@@ -23,10 +23,10 @@ interface Props {}
 
 export const HomePage = ({}: Props) => {
 	const pathname = usePathname();
-	const router = useRouter();
+	const { push } = useRouter();
 	const isTMA = isTelegram();
 
-	const handleClick = () => router.push(ROUTES.brands.all);
+	const handleClick = () => push(ROUTES.brands.all);
 
 	useMainButtonTelegram(handleClick, 'Shop');
 

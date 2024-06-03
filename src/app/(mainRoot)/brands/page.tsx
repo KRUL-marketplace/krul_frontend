@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getBrands } from '@app/brands/api';
+import { getBrands } from '@app/(mainRoot)/brands/api';
 
 import { Grid, GridItem } from '@ui/atoms/grid/grid';
 import { Title } from '@ui/atoms/typography/title/title';

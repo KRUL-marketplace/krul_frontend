@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Brand } from '@app/brands/[brand]/brand.model';
+import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
 import { Card } from '@telegram-apps/telegram-ui';
 import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
 

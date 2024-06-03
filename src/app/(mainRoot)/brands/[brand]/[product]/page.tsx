@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { getById } from '@app/brands/[brand]/[product]/api';
-import { Product } from '@app/brands/[brand]/[product]/product.model';
+import { getById } from '@app/(mainRoot)/brands/[brand]/[product]/api';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
 import { ProductPage } from '@ui/pages/product/product.page';
 

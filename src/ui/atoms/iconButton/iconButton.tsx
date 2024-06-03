@@ -9,11 +9,21 @@ import classnames from 'classnames';
 
 import css from './iconButton.module.scss';
 
+const smallIcon = css.iconButton__icon_small;
+const mediumIcon = css.iconButton__icon_medium;
+const largeIcon = css.iconButton__icon_large;
+
+const svgStyle = {
+	s: smallIcon,
+	m: mediumIcon,
+	l: largeIcon,
+};
+
 export const IconButton = (props: IconButtonProps) => {
-	const classNames = classnames(css.iconButton, props.className);
+	const classNames = classnames(css.iconButton, props.className, svgStyle[props.size || 'm']);
 
 	return (
-		<TelegramIconButton size={'l'} mode={'outline'} {...props} className={classNames}>
+		<TelegramIconButton size={'m'} mode={'outline'} {...props} className={classNames}>
 			{props.children}
 		</TelegramIconButton>
 	);

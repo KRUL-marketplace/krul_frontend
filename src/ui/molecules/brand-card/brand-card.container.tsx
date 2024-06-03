@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Brand } from '@app/brands/[brand]/brand.model';
+import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
 
 import { BrandComponent } from '@ui/molecules/brand-card/brand-card';
 
