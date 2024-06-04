@@ -3,7 +3,7 @@ import React from 'react';
 import { getById } from '@app/(mainRoot)/brands/[brand]/[product]/api';
 import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
-import { ProductPage } from '@ui/pages/product/product.page';
+import { ProductPageUI } from '@ui/pages/product/product.page';
 
 interface ProductsPageParams {
 	params: { product: string };
@@ -17,7 +17,7 @@ const Page = async (props: ProductsPageParams) => {
 
 	const product: Product = await getById(productId);
 
-	return <ProductPage data={product} />;
+	return <ProductPageUI data={product} />;
 };
 
 export default Page;

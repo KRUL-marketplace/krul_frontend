@@ -3,16 +3,17 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
-import { Button } from '@telegram-apps/telegram-ui';
-
+import { MainButton } from '@ui/atoms/button/mainButton/mainButton';
 import { Caption } from '@ui/atoms/typography/caption/caption';
 import { LargeTitle } from '@ui/atoms/typography/largeTitle/large-title';
 
 import { useMainButtonTelegram } from '@platform/telegram/use-main-button-telegram';
 
 import models from '../../../../public/images/models.webp';
+
+import classNames from 'classnames';
 
 import css from './home.module.scss';
 import { ROUTES } from '@api/routes';
@@ -21,6 +22,7 @@ import { isTelegram } from '@platform/platform-check';
 interface Props {}
 
 export const HomePage = ({}: Props) => {
+	const pathname = usePathname();
 	const { push } = useRouter();
 	const isTMA = isTelegram();
 
@@ -29,7 +31,7 @@ export const HomePage = ({}: Props) => {
 	useMainButtonTelegram(handleClick, 'Shop');
 
 	return (
-		<div className={css.home}>
+		<div className={classNames('container', css.home)}>
 			<Image
 				src={models}
 				alt={'Models'}
@@ -47,10 +49,10 @@ export const HomePage = ({}: Props) => {
 					<Caption>Discover the latest trends in fashion and accessories</Caption>
 				</div>
 			</div>
-			{!isTMA && (
-				<Button className={css.home__mainButton} onClick={handleClick}>
+			{!isTMA && pathname === '/' && (
+				<MainButton className={css.home__mainButton} onClick={handleClick}>
 					Shop
-				</Button>
+				</MainButton>
 			)}
 		</div>
 	);

@@ -8,4 +8,6 @@ export const ROUTES = {
 		product: (brand: string, slug: string) => `/brands/${brand}/${slug}`,
 	},
 	cart: '/cart',
+	cart: '/cart',
+	checkout: '/checkout',
 };

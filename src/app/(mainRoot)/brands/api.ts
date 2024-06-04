@@ -1,5 +1,5 @@
-import { brandMock } from '@app/(mainRoot)/brands/[brand]/brand.mock';
 import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
+import { brandsMock } from '@app/(mainRoot)/brands/brands.mock';
 
 import { API } from '@api/api';
 
@@ -20,6 +20,6 @@ export const getBrands = async () => {
 	} catch (error) {
 		console.error(error);
 
-		return brandMock;
+		return brandsMock;
 	}
 };
