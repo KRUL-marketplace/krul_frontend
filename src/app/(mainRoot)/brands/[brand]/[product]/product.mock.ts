@@ -26,3 +26,5 @@ export const productMock: Product = {
 		},
 	},
 };
+
+export const productsMock: Product[] = [productMock, productMock];

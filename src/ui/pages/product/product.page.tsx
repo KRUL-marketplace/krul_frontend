@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { Product } from '@app/brands/[brand]/[product]/product.model';
+import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
 import { MainButton } from '@ui/atoms/button/mainButton/mainButton';
 import { Caption } from '@ui/atoms/typography/caption/caption';
@@ -22,9 +22,9 @@ interface Props {
 	data: Product;
 }
 
-export const ProductPage = ({ data }: Props) => {
+export const ProductPageUI = ({ data }: Props) => {
 	const { id, info } = data;
-	const { name, price, brand, description } = info;
+	const { name, price, description } = info;
 	const { push } = useRouter();
 
 	const isTMA = isTelegram();

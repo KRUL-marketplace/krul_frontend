@@ -31,6 +31,6 @@ interface Category {
 export interface Product extends ServiceProductProps {
 	id: string;
 	info: Info;
-	createdAt: string;
-	updatedAt: string | null;
+	createdAt?: string;
+	updatedAt?: string | null;
 }
