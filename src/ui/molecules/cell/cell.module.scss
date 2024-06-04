@@ -1,4 +1,4 @@
-.cartItem {
+.cell {
 	width: 100%;
 	height: auto;
 	position: relative;
@@ -31,6 +31,7 @@
 		object-fit: cover;
 		position: absolute;
 		width: 96px;
+		max-height: 96px;
 	}
 
 	&__infoOutter {
@@ -41,21 +42,5 @@
 		max-inline-size: 100%;
 		min-inline-size: 0;
 		height: 100%;
-	}
-
-	&__icons {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		margin-top: 4px;
-	}
-
-	&__infoInner {
-	}
-
-	&__title {
-	}
-
-	&__price {
 	}
 }

@@ -16,7 +16,6 @@ export const BrandPageUI = ({ brand, products }: Props) => {
 		<div className={'container'}>
 			<Title level={'1'} caps style={{ textAlign: 'center' }}>
 				{brand.info.name}
-				brands
 			</Title>
 			<Products data={products} />
 		</div>

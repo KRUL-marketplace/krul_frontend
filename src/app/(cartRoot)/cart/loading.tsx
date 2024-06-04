@@ -1,7 +1,8 @@
 import React from 'react';
 
-import css from '@app/(cartRoot)/cart/cart.module.scss';
 import { Skeleton } from '@telegram-apps/telegram-ui';
+
+import css from '@ui/pages/cart/cart.module.scss';
 
 const Loading = () => {
 	return (
