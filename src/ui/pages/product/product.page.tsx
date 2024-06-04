@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
@@ -15,7 +14,6 @@ import css from '@ui/pages/product/product.module.scss';
 
 import example1 from '../../../../public/images/example 1.png';
 
-import { ROUTES } from '@api/routes';
 import { isTelegram } from '@platform/platform-check';
 
 interface Props {
@@ -25,11 +23,10 @@ interface Props {
 export const ProductPageUI = ({ data }: Props) => {
 	const { id, info } = data;
 	const { name, price, description } = info;
-	const { push } = useRouter();
 
 	const isTMA = isTelegram();
 
-	const handleClick = () => push(ROUTES.checkout);
+	const handleClick = () => {};
 
 	return (
 		<div className={css.product} key={id}>
