@@ -14,7 +14,7 @@ interface Info {
 	slug: string;
 	description?: string;
 	price: number;
-	categories: Category[];
+	categories?: Category[];
 	brand: Brand;
 }
 

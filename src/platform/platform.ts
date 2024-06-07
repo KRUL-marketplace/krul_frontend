@@ -1,9 +1,10 @@
+import { Invoice } from '@tma.js/sdk-react';
+
 import createTelegramPlatform from '@platform/telegram/init';
 import { Language } from '@platform/telegram/models';
 
 import createBrowserPlatform from '@platform/browser/init';
 import { isTelegram } from '@platform/platform-check';
-import { isTMA } from '@tma.js/sdk';
 
 export type PlatformTheme = {
 	buttonColor: string;
@@ -28,6 +29,7 @@ export interface Platform {
 	getTheme(): PlatformTheme;
 	getLanguage(): Language;
 	getPlatform(): 'ios' | 'material' | 'parent' | undefined;
+	getInvoice?: () => Invoice;
 }
 
 export const createPlatform = () => {

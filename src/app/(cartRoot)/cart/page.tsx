@@ -1,13 +1,24 @@
+import { addCartItem, deleteCartItem, getCartItems } from '@app/(cartRoot)/cart/actions';
+import { AddCartItemBody, DeleteCartItemBody } from '@app/(cartRoot)/cart/cart.model';
+
 import { CartPageUI } from '@ui/pages/cart/cart.page';
 
-interface Props {}
+const CartPage = async () => {
+	const cartProducts = await getCartItems();
 
-const getCartItems = async () => {
-	return await new Promise(() => '');
-};
+	const addToCart = async (id: AddCartItemBody) => {
+		'use server';
 
-const CartPage = async ({}: Props) => {
-	return <CartPageUI />;
+		return await addCartItem(id);
+	};
+
+	const deleteFromCart = async (id: DeleteCartItemBody) => {
+		'use server';
+
+		return await deleteCartItem(id);
+	};
+
+	return <CartPageUI cartProducts={cartProducts} addToCart={addToCart} deleteFromCart={deleteFromCart} />;
 };
 
 export default CartPage;
