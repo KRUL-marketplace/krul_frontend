@@ -1,10 +1,10 @@
-import { CleanupFn, Viewport, initMiniApp, initViewport } from '@tma.js/sdk-react';
+import { CleanupFn, InitStaticComponentFn, Invoice, Viewport, initMiniApp, initViewport } from '@tma.js/sdk-react';
 
 import { cssVarToValue } from '@platform/telegram/css-var-to-value';
 import { expandWebApp, openExternalLink, openTelegramLink } from '@platform/telegram/tma-actions';
 
 import { Platform, PlatformTheme } from '@platform/platform';
-import { InitDataParsed, initClosingBehavior, retrieveLaunchParams } from '@tma.js/sdk';
+import { InitDataParsed, initClosingBehavior, initInvoice, retrieveLaunchParams } from '@tma.js/sdk';
 
 export interface TelegramPlatform extends Platform {
 	getInitData(): InitDataParsed | undefined;
@@ -89,7 +89,7 @@ const createTelegramPlatform = (): TelegramPlatform => {
 		getStartParam: () => startParam,
 		getViewport: async () => await viewport,
 		openInternalLink: (link: string) => openTelegramLink(link),
-
+		getInvoice: initInvoice,
 		getLanguage: () => {
 			const languageCode = initData?.user?.languageCode;
 			switch (languageCode) {

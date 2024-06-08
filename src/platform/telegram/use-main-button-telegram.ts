@@ -7,7 +7,7 @@ import { isTelegram } from '@platform/platform-check';
 
 type UseMainButtonType = (onClick: () => void, text?: string) => void;
 
-export const useMainButton: UseMainButtonType = (onClick, text) => {
+export const useMainButton: UseMainButtonType = (onClick, text = 'Continue') => {
 	const [mainButton] = initMainButton();
 
 	useEffect(() => {

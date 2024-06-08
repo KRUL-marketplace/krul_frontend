@@ -5,6 +5,7 @@ export const productMock: Product = {
 	info: {
 		name: 'U.S. Polo',
 		slug: 'u.s. polo',
+		image: 'mock image',
 		description: 'Polo t-shirt description',
 		price: 4500,
 		categories: [
