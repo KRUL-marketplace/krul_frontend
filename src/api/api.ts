@@ -13,17 +13,17 @@ interface IAPI {
 			getById: (id: string) => string;
 		};
 		cart: {
-			getAll: string;
+			getByUserId: (id: string) => string;
 		};
 	};
 	post: {
 		cart: {
-			cartProduct: (body: AddCartItemBody) => string;
+			addProduct: string;
 		};
 	};
 	delete: {
 		cart: {
-			cartProduct: (body: DeleteCartItemBody) => string;
+			deleteProduct: string;
 		};
 	};
 }
@@ -41,17 +41,17 @@ export const API: IAPI = {
 			getById: (id: string) => `${process.env.DEV_API_URL}/product/${id}`,
 		},
 		cart: {
-			getAll: `${process.env.DEV_API_URL}/cartProducts`,
+			getByUserId: (id: string) => `${process.env.CART_DEV_API_URL}/cart/user/${id}`,
 		},
 	},
 	post: {
 		cart: {
-			cartProduct: (body: AddCartItemBody) => `${process.env.DEV_API_URL}/cartProduct/${body}`,
+			addProduct: `${process.env.CART_DEV_API_URL}/cart/add`,
 		},
 	},
 	delete: {
 		cart: {
-			cartProduct: (id: DeleteCartItemBody) => `${process.env.DEV_API_URL}/cartProduct/${id}`,
+			deleteProduct: `${process.env.CART_DEV_API_URL}/cart/delete`,
 		},
 	},
 };

@@ -1,7 +1,21 @@
-import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
+import { ProductInfo } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
 
-export interface CartItem extends Product {
+export interface Cart {
+	cartId: string;
+	userId: string;
+	products: CartProduct[];
+	createdAt: string;
+	updatedAt: string;
+	totalPrice: number;
+}
+
+export interface CartProduct {
+	itemId: string;
+	productId: string;
+	info: ProductInfo;
 	quantity: number;
+	createdAt?: Date;
+	updatedAt?: Date;
 }
 
 export interface CartItemBody {
@@ -17,35 +31,13 @@ export interface AddCartItemResponseSuccess {
 	id: string;
 }
 
-export interface AddCartItemResponseError {
-	code: number;
-	message: string;
-	details: [
-		{
-			'@type': string;
-			additionalProp1: string;
-			additionalProp2: string;
-			additionalProp3: string;
-		},
-	];
-}
-
 export interface DeleteCartItemResponseSuccess {
 	message: string;
 }
 
-export interface DeleteCartItemResponseError {
-	code: number;
-	message: string;
-	details: [
-		{
-			'@type': string;
-			additionalProp1: string;
-			additionalProp2: string;
-			additionalProp3: string;
-		},
-	];
+export interface CartResponseError {
+	error: string;
 }
 
-export type AddCartItemResponse = AddCartItemResponseSuccess | AddCartItemResponseError;
-export type DeleteCartItemResponse = DeleteCartItemResponseSuccess | DeleteCartItemResponseError;
+export type AddCartItemResponse = AddCartItemResponseSuccess | CartResponseError;
+export type DeleteCartItemResponse = DeleteCartItemResponseSuccess | CartResponseError;

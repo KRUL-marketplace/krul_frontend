@@ -9,9 +9,10 @@ interface ServiceProductProps {
 	isFavorite?: boolean;
 }
 
-interface Info {
+export interface ProductInfo {
 	name: string;
 	slug: string;
+	image: string;
 	description?: string;
 	price: number;
 	categories?: Category[];
@@ -30,7 +31,7 @@ interface Category {
 
 export interface Product extends ServiceProductProps {
 	id: string;
-	info: Info;
+	info: ProductInfo;
 	createdAt?: string;
 	updatedAt?: string | null;
 }

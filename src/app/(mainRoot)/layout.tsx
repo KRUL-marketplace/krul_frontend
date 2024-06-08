@@ -23,8 +23,8 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="ru" className={fonts.roboto.className}>
-			<body className={'body'}>
+		<html lang="ru" className={fonts.roboto.className} style={{ overflow: 'hidden' }}>
+			<body className={'body'} style={{ overflowY: 'scroll' }}>
 				<Providers>
 					<Main>
 						<Header />
