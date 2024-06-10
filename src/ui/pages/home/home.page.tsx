@@ -49,11 +49,7 @@ export const HomePage = ({}: Props) => {
 					<Caption>Discover the latest trends in fashion and accessories</Caption>
 				</div>
 			</div>
-			{!isTMA && pathname === '/' && (
-				<MainButton className={css.home__mainButton} onClick={handleClick}>
-					Shop
-				</MainButton>
-			)}
+			{!isTMA && pathname === '/' && <MainButton onClick={handleClick}>Shop</MainButton>}
 		</div>
 	);
 };

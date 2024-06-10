@@ -1,5 +1,3 @@
-import { AddCartItemBody, DeleteCartItemBody } from '@app/(cartRoot)/cart/cart.model';
-
 interface IAPI {
 	get: {
 		brands: {
@@ -10,6 +8,9 @@ interface IAPI {
 		products: {
 			getAll: string;
 			getByBrandId: (id: string) => string;
+			getById: (id: string) => string;
+		};
+		product: {
 			getById: (id: string) => string;
 		};
 		cart: {
@@ -38,6 +39,9 @@ export const API: IAPI = {
 		products: {
 			getAll: `${process.env.DEV_API_URL}/products`,
 			getByBrandId: (id: string) => `${process.env.DEV_API_URL}/products/brand/${id}`,
+			getById: (id: string) => `${process.env.DEV_API_URL}/product/${id}`,
+		},
+		product: {
 			getById: (id: string) => `${process.env.DEV_API_URL}/product/${id}`,
 		},
 		cart: {

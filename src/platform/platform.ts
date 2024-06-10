@@ -1,35 +1,24 @@
-import { Invoice } from '@tma.js/sdk-react';
+import { Invoice, ThemeParams, ThemeParamsParsed } from '@tma.js/sdk-react';
 
 import createTelegramPlatform from '@platform/telegram/init';
 import { Language } from '@platform/telegram/models';
 
 import createBrowserPlatform from '@platform/browser/init';
 import { isTelegram } from '@platform/platform-check';
-
-export type PlatformTheme = {
-	buttonColor: string;
-	hintColor: string;
-	buttonTextColor: string;
-	accentTextColor: string;
-	backgroundColor: string;
-	destructiveTextColor: string;
-	headerBackgroundColor: string;
-	linkColor: string;
-	secondaryBackgroundColor: string;
-	sectionBackgroundColor: string;
-	sectionHeaderTextColor: string;
-	subtitleTextColor: string;
-	textColor: string;
-};
+import { InitDataParsed } from '@tma.js/sdk';
 
 export interface Platform {
 	init(): void;
+	getInitData(): InitDataParsed | undefined;
+	getPlatform(): 'ios' | 'material' | 'parent' | undefined;
+	getTheme(): ThemeParams | ThemeParamsParsed;
+	getDataRaw(): string | undefined;
+	getStartParam(): string | undefined;
+	getInvoice?: () => Invoice;
+	getLanguage(): Language;
+
 	openExternalLink(link: string): void;
 	openInternalLink(link: string): void;
-	getTheme(): PlatformTheme;
-	getLanguage(): Language;
-	getPlatform(): 'ios' | 'material' | 'parent' | undefined;
-	getInvoice?: () => Invoice;
 }
 
 export const createPlatform = () => {

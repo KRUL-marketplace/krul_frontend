@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
-
 import { Grid, GridItem } from '@ui/atoms/grid/grid';
 import { Title } from '@ui/atoms/typography/title/title';
-import { BrandContainer } from '@ui/molecules/brand-card/brand-card.container';
+import { BrandCard } from '@ui/molecules/brand-card/brand-card';
 
 import css from './brands.module.scss';
+import { Brand } from '@models/brand.model';
 
 interface Props {
 	brands: Brand[];
@@ -24,7 +23,7 @@ export const BrandsPageUI = ({ brands }: Props) => {
 
 					return (
 						<GridItem item xs={6} sm={6} md={5} lg={3} key={id}>
-							<BrandContainer id={id} info={item.info} />
+							<BrandCard key={item.id} id={id} info={item.info} />
 						</GridItem>
 					);
 				})}

@@ -4,17 +4,6 @@ import React from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import {
-	AddCartItemBody,
-	AddCartItemResponse,
-	Cart,
-	CartItemBody,
-	CartResponseError,
-	DeleteCartItemBody,
-	DeleteCartItemResponse,
-} from '@app/(cartRoot)/cart/cart.model';
-import { isCartDefined } from '@app/(cartRoot)/cart/utils';
-
 import { IconButton } from '@ui/atoms/iconButton/iconButton';
 import { iconAdd } from '@ui/atoms/icons/icon-add';
 import { iconBin } from '@ui/atoms/icons/icon-bin';
@@ -33,11 +22,20 @@ import classNames from 'classnames';
 
 import css from './cart.module.scss';
 import { ROUTES } from '@api/routes';
+import { userId } from '@mock/userMock';
+import {
+	AddCartItemBody,
+	AddCartItemResponse,
+	Cart,
+	CartItemBody,
+	DeleteCartItemBody,
+	DeleteCartItemResponse,
+} from '@models/cart.model';
 import { InvoiceBody } from '@models/invoice.model';
 import { platform } from '@platform/platform';
 
 interface Props {
-	cart: Cart | CartResponseError;
+	cart: Cart;
 	addToCart: (body: AddCartItemBody) => Promise<AddCartItemResponse>;
 	deleteFromCart: (body: DeleteCartItemBody) => Promise<DeleteCartItemResponse>;
 }
@@ -46,36 +44,25 @@ export const CartPageUI = (props: Props) => {
 	const { cart, addToCart, deleteFromCart } = props;
 
 	const { replace } = useRouter();
-	const [userCart, setUserCart] = React.useState<Cart | CartResponseError>(cart);
+	const [userCart, setUserCart] = React.useState<Cart>(cart);
 
 	const handleAddToCart = async (body: AddCartItemBody) => {
 		await addToCart(body);
 
 		setUserCart(prevState => {
-			if (isCartDefined(prevState)) {
-				return {
-					...prevState,
-					...prevState?.products,
-					products: prevState?.products.map(product => {
-						if (product.productId === body.productId) {
-							return {
-								...product,
-								quantity: product.quantity + 1,
-							};
-						}
-						return product;
-					}),
-				};
-			}
-			return prevState;
+			return {
+				...prevState,
+				products: prevState.products.map(product => {
+					return {
+						...product,
+						quantity: product.quantity + 1,
+					};
+				}),
+			};
 		});
 	};
 
 	const clearCart = async (body: DeleteCartItemBody) => {
-		if (!isCartDefined(cart)) {
-			return cart;
-		}
-
 		try {
 			if (confirm('Do you want to clear your cart?')) {
 				await deleteFromCart(body);
@@ -95,10 +82,6 @@ export const CartPageUI = (props: Props) => {
 		await deleteFromCart(body);
 
 		setUserCart(cart => {
-			if (!isCartDefined(cart)) {
-				return cart;
-			}
-
 			const updatedProducts = cart.products.map(item =>
 				item.productId === body.productId && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item,
 			);
@@ -120,22 +103,18 @@ export const CartPageUI = (props: Props) => {
 			});
 		});
 
-	const mainButtonHandler =
-		isCartDefined(userCart) && userCart.products.length !== 0 ? createInvoice : () => replace(ROUTES.brands.all);
+	const mainButtonHandler = userCart.products.length !== 0 ? createInvoice : () => replace(ROUTES.brands.all);
 
-	const mainButtonText = isCartDefined(userCart) && userCart.products.length !== 0 ? 'Continue' : "Let's go";
+	const mainButtonText = userCart.products.length !== 0 ? 'Continue' : "Let's go";
 
 	useMainButtonTelegram(mainButtonHandler, mainButtonText);
-
-	const cartItems = isCartDefined(userCart) ? userCart.products : userCart.error;
-
-	return cartItems.length !== 0 && typeof cartItems !== 'string' ? (
+	return userCart.products.length !== 0 ? (
 		<div className={classNames(css.cart, 'container')}>
 			<Title level={'3'} className={css.cart__title}>
 				Cart
 			</Title>
 			<div className={css.cart__wrapper}>
-				{cartItems.map(cartProduct => {
+				{userCart.products.map(cartProduct => {
 					return (
 						<Cell
 							key={cartProduct.productId}
@@ -147,7 +126,7 @@ export const CartPageUI = (props: Props) => {
 									<IconButton
 										onClick={() =>
 											decreaseQuantity({
-												userId: '28942632-6112-42ef-9d12-749bcf0e58ac',
+												userId,
 												productId: cartProduct.productId,
 												quantity: 1,
 											})
@@ -158,7 +137,7 @@ export const CartPageUI = (props: Props) => {
 									<IconButton
 										onClick={() =>
 											handleAddToCart({
-												userId: '28942632-6112-42ef-9d12-749bcf0e58ac',
+												userId,
 												productId: cartProduct.productId,
 												quantity: 1,
 											})
@@ -171,7 +150,7 @@ export const CartPageUI = (props: Props) => {
 								<IconButton
 									onClick={() =>
 										clearCart({
-											userId: '28942632-6112-42ef-9d12-749bcf0e58ac',
+											userId,
 											productId: cartProduct.productId,
 											quantity: cartProduct.quantity,
 										})

@@ -1,15 +1,17 @@
+import { isDevMode } from '@utils/dev';
+
+import { API } from '@api/api';
+import { cartMock } from '@mock/cart.mock';
 import {
 	AddCartItemBody,
 	AddCartItemResponse,
 	Cart,
-	CartResponseError,
 	DeleteCartItemBody,
 	DeleteCartItemResponse,
-} from '@app/(cartRoot)/cart/cart.model';
+	GetCartResponse,
+} from '@models/cart.model';
 
-import { API } from '@api/api';
-
-export const getCart = async (userId: string): Promise<Cart | CartResponseError> => {
+export const getCart = async (userId: string): Promise<GetCartResponse> => {
 	try {
 		const response = await fetch(`${API.get.cart.getByUserId(userId)}`, {
 			headers: {
@@ -22,13 +24,19 @@ export const getCart = async (userId: string): Promise<Cart | CartResponseError>
 
 		const { cart }: { cart: Cart } = await response.json();
 
-		return cart;
-	} catch (error) {
-		console.error('error', error);
-
 		return {
-			error: 'Error while fetching cart items. Please reload the page',
+			success: true,
+			data: cart,
 		};
+	} catch (error) {
+		const devSuccessResponse = {
+			success: true,
+			data: cartMock,
+		};
+
+		if (isDevMode) {
+			return devSuccessResponse;
+		} else throw new Error('Error while fetching cart items. Please reload the page');
 	}
 };
 
@@ -48,17 +56,18 @@ export const addCartItem = async (body: AddCartItemBody): Promise<AddCartItemRes
 
 		const { id }: { id: string } = await response.json();
 
-		return { id };
+		return {
+			success: true,
+			data: id,
+		};
 	} catch (error) {
 		console.error(error);
 
-		return {
-			error: 'Error while adding item to cart. Please try again',
-		};
+		throw new Error('Error while adding item to cart. Please try again');
 	}
 };
 
-export const deleteCartItem = async (body: DeleteCartItemBody): Promise<DeleteCartItemResponse | CartResponseError> => {
+export const deleteCartItem = async (body: DeleteCartItemBody): Promise<DeleteCartItemResponse> => {
 	try {
 		const response = await fetch(`${API.delete.cart.deleteProduct}`, {
 			method: 'POST',
@@ -74,12 +83,13 @@ export const deleteCartItem = async (body: DeleteCartItemBody): Promise<DeleteCa
 
 		const { message }: { message: string } = await response.json();
 
-		return { message };
+		return {
+			success: true,
+			data: message,
+		};
 	} catch (error) {
 		console.error(error);
 
-		return {
-			error: 'Error while deleting item from cart. Please try again',
-		};
+		throw new Error('Error while deleting item from cart. Please try again');
 	}
 };

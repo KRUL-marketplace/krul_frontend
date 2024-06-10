@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
-
 import { Grid, GridItem } from '@ui/atoms/grid/grid';
 import { ProductContainer } from '@ui/molecules/product-card/product-card.container';
+
+import { Product } from '@models/product.model';
 
 interface Props<T> {
 	data: T[];

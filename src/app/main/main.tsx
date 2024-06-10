@@ -16,11 +16,11 @@ export const Main = (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 
 	useBackButtonTelegram();
 
+	const theme = platform.getTheme();
+
 	return (
-		<>
-			<main {...props} className={classNames(css.main)}>
-				<div className={css.main__wrapper}>{props.children}</div>
-			</main>
-		</>
+		<main {...props} className={classNames(css.main)} style={{ background: theme.bgColor }}>
+			<div className={css.main__wrapper}>{props.children}</div>
+		</main>
 	);
 };

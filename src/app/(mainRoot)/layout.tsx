@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru" className={fonts.roboto.className} style={{ overflow: 'hidden' }}>
-			<body className={'body'} style={{ overflowY: 'scroll' }}>
+			<body style={{ overflowY: 'scroll' }}>
 				<Providers>
 					<Main>
 						<Header />
