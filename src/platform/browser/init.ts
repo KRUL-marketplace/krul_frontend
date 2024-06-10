@@ -1,58 +1,68 @@
+import { ThemeParamsParsed } from '@tma.js/sdk-react';
+
 import { Platform } from '@platform/platform';
+import { mockTelegramEnv, parseInitData } from '@tma.js/sdk';
 
-export interface BrowserPlatform extends Platform {
-	getInitData(): string | undefined;
-}
+const initDataRaw = new URLSearchParams([
+	[
+		'user',
+		JSON.stringify({
+			id: 99281932,
+			first_name: 'Ramazan',
+			last_name: 'Ittiev',
+			username: 'Ramazzaniii',
+			language_code: 'ru',
+			is_premium: false,
+			allows_write_to_pm: true,
+		}),
+	],
+	['hash', '89d6079ad6762351f38c6dbbc41bb53048019256a9443988af7a48bcad16ba31'],
+	['auth_date', '1716922846'],
+	['start_param', 'debug'],
+	['chat_type', 'sender'],
+	['chat_instance', '8428209589180549439'],
+]).toString();
 
-export const colorScheme: Record<string, string> = {
-	'--tg-theme-hint-color': '#999999',
-	'--tg-theme-secondary-bg-color': '#efeff3',
-	'--tg-theme-text-color': '#000000',
-	'--tg-theme-section-bg-color': '#ffffff',
-	'--tg-theme-header-bg-color': '#212121',
-	'--tg-theme-accent-text-color': '#2481cc',
-	'--tg-color-scheme': 'light',
-	'--tg-viewport-height': '100vh',
-	'--tg-theme-destructive-text-color': '#ff3b30',
-	'--tg-theme-button-color': '#2481cc',
-	'--tg-theme-bg-color': '#fff',
-	'--tg-theme-subtitle-text-color': '#999999',
-	'--tg-theme-button-text-color': '#ffffff',
-	'--tg-theme-section-header-text-color': '#6d6d71',
-	'--tg-theme-link-color': '#2481cc',
-	'--tg-viewport-stable-height': '100vh',
+const themeParams: ThemeParamsParsed = {
+	accentTextColor: '#8774e1',
+	bgColor: '#212121',
+	buttonColor: '#8774e1',
+	buttonTextColor: '#ffffff',
+	destructiveTextColor: '#ff595a',
+	headerBgColor: '#212121',
+	hintColor: '#aaaaaa',
+	linkColor: '#8774e1',
+	secondaryBgColor: '#181818',
+	sectionBgColor: '#212121',
+	sectionHeaderTextColor: '#8774e1',
+	subtitleTextColor: '#aaaaaa',
+	textColor: '#ffffff',
 };
 
-const createBrowserPlatform = (): BrowserPlatform => {
+const createBrowserPlatform = (): Platform => {
 	return {
 		init: () => {
-			for (const variable in colorScheme) {
-				document.documentElement.style.setProperty(variable, colorScheme[variable]);
-			}
+			return mockTelegramEnv({
+				themeParams,
+				initData: parseInitData(initDataRaw),
+				initDataRaw,
+				version: '7.2',
+				platform: 'tdesktop',
+				startParam: 'startParam',
+			});
 		},
+
+		getInitData: () => parseInitData(initDataRaw),
+		getDataRaw: () => initDataRaw,
+		getStartParam: () => 'startParam',
+
 		getPlatform: () => (navigator.userAgent.includes('AppleWebKit') ? 'ios' : 'material'),
-		getInitData: () => undefined,
-		getTheme: () => ({
-			buttonColor: colorScheme['--tg-theme-button-color'],
-			hintColor: colorScheme['--tg-theme-hint-color'],
-			buttonTextColor: colorScheme['--tg-theme-button-text-color'],
-			accentTextColor: colorScheme['--tg-theme-accent-text-color'],
-			backgroundColor: colorScheme['--tg-theme-bg-color'],
-			destructiveTextColor: colorScheme['--tg-theme-destructive-text-color'],
-			headerBackgroundColor: colorScheme['--tg-theme-header-bg-color'],
-			linkColor: colorScheme['--tg-theme-link-color'],
-			secondaryBackgroundColor: colorScheme['--tg-theme-secondary-bg-color'],
-			sectionBackgroundColor: colorScheme['--tg-theme-section-bg-color'],
-			sectionHeaderTextColor: colorScheme['--tg-theme-section-header-text-color'],
-			subtitleTextColor: colorScheme['--tg-theme-subtitle-text-color'],
-			textColor: colorScheme['--tg-theme-text-color'],
-		}),
+		getTheme: () => themeParams,
+		getLanguage: () => 'en',
 
 		openInternalLink: (link: string) => (window.location.href = link),
 
 		openExternalLink: (link: string) => window.open(link, '_blank'),
-
-		getLanguage: () => 'en',
 	};
 };
 

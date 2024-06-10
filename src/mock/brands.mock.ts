@@ -1,4 +1,4 @@
-import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
+import { Brand } from '@models/brand.model';
 
 export const brandsMock: Brand[] = [
 	{

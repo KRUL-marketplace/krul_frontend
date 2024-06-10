@@ -1,4 +1,4 @@
-import { ProductInfo } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
+import { ProductInfo } from '@models/product.model';
 
 export interface Cart {
 	cartId: string;
@@ -28,16 +28,20 @@ export type AddCartItemBody = CartItemBody;
 export type DeleteCartItemBody = CartItemBody;
 
 export interface AddCartItemResponseSuccess {
-	id: string;
+	success: boolean;
+	data: string;
 }
 
 export interface DeleteCartItemResponseSuccess {
-	message: string;
+	success: boolean;
+	data: string;
 }
 
-export interface CartResponseError {
-	error: string;
+export interface CartSuccessResponse {
+	success: boolean;
+	data: Cart;
 }
 
-export type AddCartItemResponse = AddCartItemResponseSuccess | CartResponseError;
-export type DeleteCartItemResponse = DeleteCartItemResponseSuccess | CartResponseError;
+export type GetCartResponse = CartSuccessResponse | Error;
+export type AddCartItemResponse = AddCartItemResponseSuccess | Error;
+export type DeleteCartItemResponse = DeleteCartItemResponseSuccess | Error;

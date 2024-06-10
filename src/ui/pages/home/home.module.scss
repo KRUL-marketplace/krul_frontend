@@ -33,13 +33,4 @@
 		justify-content: center;
 		text-align: center;
 	}
-
-	&__mainButton {
-		position: absolute;
-		bottom: 0;
-		z-index: 111;
-		width: 100%;
-		left: 0;
-		background: var(--tg-theme-button-color);
-	}
 }

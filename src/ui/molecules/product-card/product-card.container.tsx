@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { Product } from '@app/(mainRoot)/brands/[brand]/[product]/product.model';
-
 import { ProductCardComponent } from '@ui/molecules/product-card/product-card.component';
+
+import { Product } from '@models/product.model';
 
 export const ProductContainer = (props: Product) => {
 	const [isFavorite, setIsFavorite] = React.useState<boolean>(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Brand } from '@app/(mainRoot)/brands/[brand]/brand.model';
+import { Brand } from '@models/brand.model';
 
 interface ServiceProductProps {
 	iconSize?: 's' | 'm' | 'l';
@@ -35,3 +35,17 @@ export interface Product extends ServiceProductProps {
 	createdAt?: string;
 	updatedAt?: string | null;
 }
+
+export interface ProductsResponseSuccess {
+	success: boolean;
+	data: Product[];
+}
+
+export type ProductsResponse = ProductsResponseSuccess | Error;
+
+export interface ProductResponseSuccess {
+	success: boolean;
+	data: Product;
+}
+
+export type ProductResponse = ProductResponseSuccess | Error;

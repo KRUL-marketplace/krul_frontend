@@ -1,4 +1,4 @@
-import { Cart } from '@app/(cartRoot)/cart/cart.model';
+import { Cart } from '@models/cart.model';
 
 export const cartMock: Cart = {
 	cartId: '1',

@@ -28,7 +28,7 @@
 		margin: 0 auto;
 	}
 
-	&_favourite_active {
-		fill: var(--tg-theme-text-color);
+	&_favourite_active svg {
+		fill: var(--tgui--accent_text_color);
 	}
 }

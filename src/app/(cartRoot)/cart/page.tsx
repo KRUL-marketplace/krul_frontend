@@ -1,10 +1,16 @@
-import { addCartItem, deleteCartItem, getCart } from '@app/(cartRoot)/cart/actions';
-import { AddCartItemBody, DeleteCartItemBody } from '@app/(cartRoot)/cart/cart.model';
-
 import { CartPageUI } from '@ui/pages/cart/cart.page';
+
+import { addCartItem, deleteCartItem, getCart } from '@actions/cart.action';
+import { AddCartItemBody, DeleteCartItemBody, GetCartResponse } from '@models/cart.model';
+
+const isCartResponseFailed = (response: GetCartResponse): response is Error => {
+	return (response as Error).message !== undefined;
+};
 
 const CartPage = async () => {
 	const cart = await getCart('28942632-6112-42ef-9d12-749bcf0e58ac');
+
+	const successResponse = !isCartResponseFailed(cart) && cart.success;
 
 	const addToCart = async (body: AddCartItemBody) => {
 		'use server';
@@ -18,7 +24,9 @@ const CartPage = async () => {
 		return await deleteCartItem(body);
 	};
 
-	return <CartPageUI cart={cart} addToCart={addToCart} deleteFromCart={deleteFromCart} />;
+	if (successResponse) {
+		return <CartPageUI cart={cart.data} addToCart={addToCart} deleteFromCart={deleteFromCart} />;
+	}
 };
 
 export default CartPage;
