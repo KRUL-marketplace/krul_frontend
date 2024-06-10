@@ -2,6 +2,8 @@
 
 import { DetailedHTMLProps, HTMLAttributes, useEffect } from 'react';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { useBackButtonTelegram } from '@platform/telegram/use-back-button';
 
 import classNames from 'classnames';
@@ -19,8 +21,13 @@ export const Main = (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 	const theme = platform.getTheme();
 
 	return (
-		<main {...props} className={classNames(css.main)} style={{ background: theme.bgColor }}>
-			<div className={css.main__wrapper}>{props.children}</div>
-		</main>
+		<>
+			<main {...props} className={classNames(css.main)} style={{ background: theme.bgColor }}>
+				<div className={css.main__wrapper}>
+					{props.children}
+					<SpeedInsights />
+				</div>
+			</main>
+		</>
 	);
 };
