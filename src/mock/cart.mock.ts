@@ -5,7 +5,7 @@ export const cartMock: Cart = {
 	userId: '1',
 	products: [
 		{
-			productId: 'mock id',
+			productId: 'mock id 1',
 			itemId: 'itemId',
 			quantity: 2,
 			info: {

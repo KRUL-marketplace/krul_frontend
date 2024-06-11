@@ -27,6 +27,18 @@ export interface CartItemBody {
 export type AddCartItemBody = CartItemBody;
 export type DeleteCartItemBody = CartItemBody;
 
+// export interface AddCartItemResponse<Data> {
+// 	success: boolean;
+// 	data: Data | null;
+// 	message?: Error;
+// }
+
+// export interface FetchResponse<Data> {
+// 	success: boolean;
+// 	data: Data | null;
+// 	message?: Error;
+// }
+
 export interface AddCartItemResponseSuccess {
 	success: boolean;
 	data: string;

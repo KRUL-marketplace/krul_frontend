@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -46,21 +46,27 @@ export const CartPageUI = (props: Props) => {
 	const { replace } = useRouter();
 	const [userCart, setUserCart] = React.useState<Cart>(cart);
 
-	const handleAddToCart = async (body: AddCartItemBody) => {
-		await addToCart(body);
+	const handleAddToCart = useCallback(
+		async (body: AddCartItemBody) => {
+			await addToCart(body);
 
-		setUserCart(prevState => {
-			return {
-				...prevState,
-				products: prevState.products.map(product => {
-					return {
-						...product,
-						quantity: product.quantity + 1,
-					};
-				}),
-			};
-		});
-	};
+			setUserCart(prevState => {
+				return {
+					...prevState,
+					products: prevState.products.map(product => {
+						if (product.productId === body.productId) {
+							return {
+								...product,
+								quantity: product.quantity + 1,
+							};
+						}
+						return product;
+					}),
+				};
+			});
+		},
+		[addToCart],
+	);
 
 	const clearCart = async (body: DeleteCartItemBody) => {
 		try {
@@ -108,6 +114,7 @@ export const CartPageUI = (props: Props) => {
 	const mainButtonText = userCart.products.length !== 0 ? 'Continue' : "Let's go";
 
 	useMainButtonTelegram(mainButtonHandler, mainButtonText);
+
 	return userCart.products.length !== 0 ? (
 		<div className={classNames(css.cart, 'container')}>
 			<Title level={'3'} className={css.cart__title}>
